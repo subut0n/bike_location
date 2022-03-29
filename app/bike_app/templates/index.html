@@ -1,6 +1,43 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>Hello world</h1>
-<p>{{ data }}</p>
+<header class="navbar">
+    <h1>Veloc'City report</h1>
+    <button>Prediction</button>
+</header>
+
+<section class="presentation">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id, ut odit reprehenderit rerum rem debitis nam alias earum provident iste sunt officiis fugiat perspiciatis error nobis iusto! Recusandae, praesentium?</p>
+</section>
+
+<main class="daily-recap">
+
+    <section class="date">
+        <h2>Date of the day :</h2>
+        <p>{{ prediction['date'] }}</p>
+    </section>
+    
+    <section class="weather">
+        <h2>Weather :</h2>
+        <p>{{ prediction['weather'] }}</p>
+    </section>
+
+    <section class="registered">
+        <h2>Number of registered :</h2>
+        <p>{{ prediction['registered'] }}</p>
+    </section>
+
+    <section class="casual">
+        <h2>Number of casual :</h2>
+        <p>{{ prediction['casual'] }}</p>
+    </section>
+
+    <section class="count">
+        <h2>Total count :</h2>
+        <p>{{ prediction['count'] }}</p>
+    </section>
+
+
+</main>
+
 {% endblock %}

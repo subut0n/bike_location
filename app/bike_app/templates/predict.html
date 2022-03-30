@@ -5,5 +5,29 @@
 {% endblock %}
 
 {% block body %}
-<h1>Template</h1>
+
+<h1>Prédiction</h1>
+
+<div class="'container">
+    <div class="input-group mb-3">
+        {{ form.date(class="form-control", placeholder="Date") }}
+    </div>
+    <div class="input-group mb-3">
+        {{ form.hour(class="form-control", placeholder="Heure") }}
+    </div>
+    <div class="input-group mb-3">
+        {{ form.temperature(class="form-control", placeholder="Température") }}
+    </div>
+    <div class="input-group mb-3">
+        {{ form.atemperature(class="form-control", placeholder="Température ressentie") }}
+    </div>
+    <div class="input-group mb-3">
+        {{ form.humidity(class="form-control", placeholder="Humidité") }}
+    </div>
+    <div class="input-group mb-3">
+        {{ form.windspeed(class="form-control", placeholder="Force du vent (en km/h)") }}
+    </div>
+    {{ form.submit(class="btn btn-lg", id="button")}}
+</div>
+  
 {% endblock %}

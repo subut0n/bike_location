@@ -12,11 +12,11 @@ def get_48h_data(dataAPI):
     dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
     data = []
     for i, dict in enumerate(dataAPI):
-        data.append(data_formating(dict))
+        data.append(data_formatting(dict))
     return f'{data}'
 
 
-def data_formating(currentDataAPI):
+def data_formatting(currentDataAPI):
 
     # On extrait les données nécessaires pour la prédiction
     time_stamp = currentDataAPI['dt']

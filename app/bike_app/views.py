@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for
-import requests
+from .utils import load_dataAPI, data_formating, get_48h_data
 
 app = Flask(__name__)
 
@@ -8,13 +8,13 @@ app.config.from_object('config')
 @app.route('/')
 @app.route('/index/')
 def index():
-     API_KEY_OPENWEATHERMAP = app.config['API_KEY_OPENWEATHERMAP']
-     LAT = 50.62925
-     LONG = 3.057256
-     url = 'https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&appid={}'.format(LAT, LONG, API_KEY_OPENWEATHERMAP)
-     req = requests.get(url)
-     data = req.content
-     return render_template('index.html', data=data)
+     api_key = app.config['API_KEY_OPENWEATHERMAP']
+     # Latitude et longitude de Lille
+     lat = app.config['LAT']
+     long = app.config['LONG']
+     dataAPI = load_dataAPI(lat, long, api_key)
+     data = get_48h_data(dataAPI['hourly'])
+     return data#render_template('index.html', data=dataAPI)
 
 @app.route('/predict/')
 def predict():

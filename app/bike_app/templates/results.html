@@ -1,60 +1,55 @@
-{% extends 'base.html' %}
-
-{% block body %}
 <header class="navbar">
     <h1>Veloc'City report</h1>
     <button>Prediction</button>
 </header>
 
 <section class="presentation">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id, ut odit reprehenderit rerum rem debitis nam alias earum provident iste sunt officiis fugiat perspiciatis error nobis iusto! Recusandae, praesentium?</p>
+    <p>Here are the results of your future_prediction</p>
 </section>
 
 <main class="daily-recap">
 
     <section class="date">
         <h2>Date of the day :</h2>
-        <p>{{ today_prediction['date'] }}</p>
+        <p>{{ future_prediction['date'] }}</p>
     </section>
     
     <section class='meteo'>
         <section class="weather">
             <h2>Conditions meteorologiques :</h2>
-            <p>{{ today_prediction['weather'] }}</p>
+            <p>{{ future_prediction['weather'] }}</p>
         </section>
         <section class="temperature">
             <h2>Temperature :</h2>
-            <p>{{ today_prediction['temperature'] }}</p>
+            <p>{{ future_prediction['temperature'] }}</p>
         </section>
         <section class="atemperature">
             <h2>Temperature ressentie :</h2>
-            <p>{{ today_prediction['atemperature'] }}</p>
+            <p>{{ future_prediction['atemperature'] }}</p>
         </section>
         <section class="windforce">
             <h2>Force du vent :</h2>
-            <p>{{ today_prediction['windforce'] }}</p>
+            <p>{{ future_prediction['windspeed'] }}</p>
         </section>
         <section class="humidity">
             <h2>Humidite :</h2>
-            <p>{{ today_prediction['humidity'] }}</p>
+            <p>{{ future_prediction['humidity'] }}</p>
         </section>
     </section>
 
     <section class="registered">
         <h2>Number of registered :</h2>
-        <p>{{ today_prediction['registered'] }}</p>
+        <p>{{ future_prediction['registered'] }}</p>
     </section>
 
     <section class="casual">
         <h2>Number of casual :</h2>
-        <p>{{ today_prediction['casual'] }}</p>
+        <p>{{ future_prediction['casual'] }}</p>
     </section>
 
     <section class="count">
         <h2>Total count :</h2>
-        <p>{{ today_prediction['count'] }}</p>
+        <p>{{ future_prediction['count'] }}</p>
     </section>
 
 </main>
-
-{% endblock %}

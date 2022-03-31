@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<header class="navbar">
-    <h1>Veloc'City report</h1>
-    <button>Prediction</button>
-</header>
 
 <section class="presentation">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id, ut odit reprehenderit rerum rem debitis nam alias earum provident iste sunt officiis fugiat perspiciatis error nobis iusto! Recusandae, praesentium?</p>
@@ -12,47 +8,42 @@
 
 <main class="daily-recap">
 
-    <section class="date">
-        <h2>Date of the day :</h2>
-        <p>{{ today_prediction['date'] }}</p>
-    </section>
-    
-    <section class='meteo'>
-        <section class="weather">
-            <h2>Conditions meteorologiques :</h2>
-            <p>{{ today_prediction['weather'] }}</p>
-        </section>
-        <section class="temperature">
-            <h2>Temperature :</h2>
-            <p>{{ today_prediction['temperature'] }}</p>
-        </section>
-        <section class="atemperature">
-            <h2>Temperature ressentie :</h2>
-            <p>{{ today_prediction['atemperature'] }}</p>
-        </section>
-        <section class="windforce">
-            <h2>Force du vent :</h2>
-            <p>{{ today_prediction['windforce'] }}</p>
-        </section>
-        <section class="humidity">
-            <h2>Humidite :</h2>
-            <p>{{ today_prediction['humidity'] }}</p>
-        </section>
-    </section>
+    <section class='col-md-3 mx-auto meteo'>
+        <div class="date">
+            <h3>Date of the day :</h3>
+            <p>{{ data[0]['dt'] }}</p>
+        </div>
+        <div class="weather">
+            <h3>Conditions meteorologiques :</h3>
+                <p>
+                    {% for i in range(4) %}
+                        {% if data[0]['weather_' + (i+1)|string] != 0%}
+                            {{ data[0]['weather_' + (i+1)|string] }}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+        </div>
+        <div class="temperature">
+            <h3>Temperature :</h3>
+            <p>{{ data[0]['temp'] }}</p>
+        </div>
+        <div class="atemperature">
+            <h3>Temperature ressentie :</h3>
+            <p>{{ data[0]['atemp'] }}</p>
+        </div>
+        <div class="windforce">
+            <h3>Force du vent :</h3>
+            <p>{{ data[0]['windspeed'] }}</p>
+        </div>
+        <div class="humidity">
+            <h3>Humidite :</h3>
+            <p>{{ data[0]['humidity'] }}</p>
+        </div>
 
-    <section class="registered">
-        <h2>Number of registered :</h2>
-        <p>{{ today_prediction['registered'] }}</p>
-    </section>
-
-    <section class="casual">
-        <h2>Number of casual :</h2>
-        <p>{{ today_prediction['casual'] }}</p>
-    </section>
-
-    <section class="count">
-        <h2>Total count :</h2>
-        <p>{{ today_prediction['count'] }}</p>
+        <div class="registered">
+            <h3>Number of registered :</h3>
+            <p>{{ pred[0] }}</p>
+        </div>
     </section>
 
 </main>

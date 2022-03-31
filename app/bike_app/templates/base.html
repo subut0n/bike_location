@@ -10,10 +10,13 @@
 </head>
 <body>
     <header class="navbar">
-        <a href="{{ url_for('index') }}", class="btn btn-lg">Home</button>
-        <a href="{{ url_for('predict') }}", class="btn btn-lg">Prediction</button>
+        <a href="{{ url_for('index') }}", class="btn btn-lg">Home</a>
+        <a href="{{ url_for('predict') }}", class="btn btn-lg">Prediction</a>
     </header>
-    <h1>Veloc'City report</h1>
+
+    <div class='col-md-3 mx-auto meteo'>
+        <h1>Veloc'City report</h1>
+    </div>
     {% block body %}
 
     {% endblock %}

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for
-from .utils import load_dataAPI, data_formatting, get_48h_data, prediction
+from .utils import load_dataAPI, data_formatting, get_48h_data, prediction, get_encoded_features_name
 from .forms import AddPrediction
-from .models import get_encoded_features_name
 import pandas as pd
 import os
 
@@ -27,8 +26,10 @@ def index():
      data = get_48h_data(dataAPI['hourly'], feature_names)
      cwd = os.getcwd()
      pickle_uri = cwd + '\\model_test.pkl'
-     pred = prediction(pickle_uri, data)
-     return pred #render_template('index.html', data=data)
+     pred = eval(prediction(pickle_uri, data))
+     data = eval(data)
+
+     return render_template('index.html', data=data, pred=pred)
 
 @app.route('/predict/')
 def predict():

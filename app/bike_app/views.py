@@ -1,7 +1,14 @@
 from flask import Flask, render_template, url_for
-from .utils import load_dataAPI, data_formating, get_48h_data
+from .utils import load_dataAPI, data_formatting, get_48h_data, prediction
+from .forms import AddPrediction
+from .models import get_encoded_features_name
+import pandas as pd
+import os
 
 app = Flask(__name__)
+
+basedir = os.getcwd()
+db = pd.read_csv(os.path.join(basedir, '..\\csv\\train_modifie.csv'))
 
 app.config.from_object('config')
 
@@ -9,13 +16,22 @@ app.config.from_object('config')
 @app.route('/index/')
 def index():
      api_key = app.config['API_KEY_OPENWEATHERMAP']
-     # Latitude et longitude de Lille
-     lat = app.config['LAT']
-     long = app.config['LONG']
+     lat = app.config['LAT'] # latitude de Lille
+     long = app.config['LONG'] # longitude de Lille
      dataAPI = load_dataAPI(lat, long, api_key)
-     data = get_48h_data(dataAPI['hourly'])
-     return data#render_template('index.html', data=dataAPI)
+
+     # On encode les colonnes catégorielles et on récupère la liste des noms de ces colonnes
+     features_to_encode = ['season', 'weather', 'week_days', 'months']
+     feature_names = get_encoded_features_name(db, features_to_encode)
+
+     data = get_48h_data(dataAPI['hourly'], feature_names)
+     cwd = os.getcwd()
+     pickle_uri = cwd + '\\model_test.pkl'
+     pred = eval(prediction(pickle_uri, data))
+     data = eval(data)
+     return render_template('index.html', data=data, pred=pred)
 
 @app.route('/predict/')
 def predict():
-    return render_template('predict.html')
+     form = AddPrediction()
+     return render_template('predict.html', form=form)

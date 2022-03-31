@@ -18,3 +18,4 @@ class AddPrediction(FlaskForm):
     atemperature = StringField(label='Température ressentie')
     humidity = StringField(label='Humidité')
     windspeed = StringField(label='Force du vent en km/h')
+    submit = SubmitField(label="Prédiction")

@@ -16,7 +16,7 @@ def load_dataAPI(lat, long, api_key):
 def get_48h_data(dataAPI, feature_names):
     dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
     data = []
-    for i, dict in enumerate(dataAPI):
+    for i, dict in dataAPI:
         data.append(data_formating(dict, feature_names))
     return f'{data}'
 
@@ -41,12 +41,7 @@ def data_formating(data_1h_API, feature_names):
     data_1h_API['dt'] = datetime.fromtimestamp(data_1h_API['dt'])
     data_1h_API['weather'] = data_1h_API['weather'][0]['id']
 
-    # Création d'un dictionnaire avec les clés correspondant aux noms des features utilisées
-    # lors de la modélisation donc encodées.
-    data_1h_dict = {}
-    for name in feature_names:
-        data_1h_dict[name] = 0
-
+    # Reformatage des donnees issues de l'API 
     keys = ['dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'weather']
     new_keys = ['dt', 'temp', 'atemp', 'humidity', 'windspeed', 'weather']
     data = {}
@@ -54,6 +49,12 @@ def data_formating(data_1h_API, feature_names):
         data[new_key] = data_1h_API[key]
     data['temp'] = data['temp'] - 273.15
     data['atemp'] = data['atemp'] - 273.15
+
+    # Création d'un dictionnaire avec les clés correspondant aux noms des features utilisées
+    # lors de la modélisation donc encodées.
+    data_1h_dict = {}
+    for name in feature_names:
+        data_1h_dict[name] = 0
 
     for key in data.keys():
         data_1h_dict[key] = data[key]

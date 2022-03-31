@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
+
+{% block head %}
+
+<
+
+{% end block %}
+
 {% block body %}
 
 <section class="presentation">
@@ -8,7 +15,7 @@
 
 <main class="daily-recap">
 
-    <section class='col-md-3 mx-auto meteo'>
+    <section class='meteo-now'>
         <div class="date">
             <h3>Date of the day :</h3>
             <p>{{ data[0]['dt'] }}</p>
@@ -44,6 +51,10 @@
             <h3>Number of registered :</h3>
             <p>{{ pred[0] }}</p>
         </div>
+    </section>
+
+    <section class='meteo-48h'>
+        blablablabla
     </section>
 
 </main>

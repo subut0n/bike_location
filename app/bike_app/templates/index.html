@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
+
+{% block head %}
+
+<
+
+{% end block %}
+
 {% block body %}
 
 <section class="presentation">
@@ -8,7 +15,11 @@
 
 <main class="daily-recap">
 
+<<<<<<< HEAD
     <section class='col-md-3 mx-auto meteo'>
+=======
+    <section class='meteo-now'>
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635
         <div class="date">
             <h3>Date of the day :</h3>
             <p>{{ data[0]['dt'] }}</p>
@@ -17,8 +28,13 @@
             <h3>Conditions meteorologiques :</h3>
                 <p>
                     {% for i in range(4) %}
+<<<<<<< HEAD
                         {% if data[0]['weather_' + (i+1)|string] != 0%}
                             {{ data[0]['weather_' + (i+1)|string] }}
+=======
+                        {% if data[0]['weather_' + (i + 1)|string] != 0%}
+                            {{ data[0]['weather_' + (i + 1)|string] }}
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635
                         {% endif %}
                     {% endfor %}
                 </p>
@@ -39,11 +55,23 @@
             <h3>Humidite :</h3>
             <p>{{ data[0]['humidity'] }}</p>
         </div>
+<<<<<<< HEAD
 
         <div class="registered">
             <h3>Number of registered :</h3>
             <p>{{ pred[0] }}</p>
         </div>
+=======
+
+        <div class="registered">
+            <h3>Number of registered :</h3>
+            <p>{{ pred[0] }}</p>
+        </div>
+    </section>
+
+    <section class='meteo-48h'>
+        blablablabla
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635
     </section>
 
 </main>

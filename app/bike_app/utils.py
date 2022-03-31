@@ -16,8 +16,13 @@ def load_dataAPI(lat, long, api_key):
 def get_48h_data(dataAPI, feature_names):
     dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
     data = []
+<<<<<<< HEAD
     for i, dict in enumerate(dataAPI):
         data.append(data_formatting(dict, feature_names))
+=======
+    for i, dict in dataAPI:
+        data.append(data_formating(dict, feature_names))
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635
     return f'{data}'
 
 def get_encoded_features_name(data, features_to_encode):
@@ -33,13 +38,18 @@ def get_encoded_features_name(data, features_to_encode):
     data = data.rename(columns=features_name)
     return data.columns
 
+<<<<<<< HEAD
 def data_formatting(data_1h_API, feature_names):
+=======
+def data_formating(data_1h_API, feature_names):
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635
     # keys correspond aux clés du dataset après onehotencodage
 
     # On extrait les données nécessaires pour la prédiction
     time_stamp = data_1h_API['dt']
     data_1h_API['dt'] = datetime.fromtimestamp(data_1h_API['dt'])
     data_1h_API['weather'] = data_1h_API['weather'][0]['id']
+<<<<<<< HEAD
 
     # Création d'un dictionnaire avec les clés correspondant aux noms des features utilisées
     # lors de la modélisation donc encodées.
@@ -47,6 +57,10 @@ def data_formatting(data_1h_API, feature_names):
     for name in feature_names:
         data_1h_dict[name] = 0
 
+=======
+
+    # Reformatage des donnees issues de l'API 
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635
     keys = ['dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'weather']
     new_keys = ['dt', 'temp', 'atemp', 'humidity', 'windspeed', 'weather']
     data = {}
@@ -55,6 +69,15 @@ def data_formatting(data_1h_API, feature_names):
     data['temp'] = data['temp'] - 273.15
     data['atemp'] = data['atemp'] - 273.15
 
+<<<<<<< HEAD
+=======
+    # Création d'un dictionnaire avec les clés correspondant aux noms des features utilisées
+    # lors de la modélisation donc encodées.
+    data_1h_dict = {}
+    for name in feature_names:
+        data_1h_dict[name] = 0
+
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635
     for key in data.keys():
         data_1h_dict[key] = data[key]
 
@@ -110,4 +133,8 @@ def prediction(pickle_uri, data):
     #  data = ast.literal_eval(data)
      data = pd.DataFrame(eval(data))
      pred = list(model.predict(data))
+<<<<<<< HEAD
      return f'{pred}'
+=======
+     return f'{pred}'
+>>>>>>> 47c0c504c7b8859bdb5a6a7b8f1efe55702bd635

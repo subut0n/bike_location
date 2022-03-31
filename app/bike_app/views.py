@@ -28,7 +28,7 @@ def index():
      pickle_uri = cwd + '\\model_test.pkl'
      pred = eval(prediction(pickle_uri, data))
      data = eval(data)
-
+     
      return render_template('index.html', data=data, pred=pred)
 
 @app.route('/predict/')

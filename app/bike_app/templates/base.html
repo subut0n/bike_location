@@ -10,12 +10,14 @@
     {% block head %}{% endblock %}
 </head>
 <body>
-    <header class="navbar">
-        <a href="{{ url_for('index') }}", class="btn btn-lg">Home</a>
-        <a href="{{ url_for('predict') }}", class="btn btn-lg">Prediction</a>
+    <header class="header">
+        <ul class="nav">
+            <li class="today"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Veloc'City Today</a></li>
+            <li class="manual"><a href="{{ url_for('predict') }}" class="nav-link">Manual prediction</a></li>
+          </ul>
     </header>
 
-    <div class='col-md-3 mx-auto meteo'>
+    <div class='title'>
         <h1>Veloc'City report</h1>
     </div>
     {% block body %}

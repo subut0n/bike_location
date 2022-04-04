@@ -37,6 +37,7 @@ def index():
 @app.route('/predict/', methods=['GET', 'POST'])
 def predict():
      form = AddPrediction()
+
      if form.validate_on_submit():
           # On encode les colonnes catégorielles et on récupère la liste des noms de ces colonnes
           features_to_encode = ['season', 'weather', 'week_days', 'months']
@@ -54,16 +55,23 @@ def predict():
           dict['months_' + str(month)] = 1
           weekday = dict['dt'].weekday()+1
           dict['week_days_' + str(weekday)] = 1
-          dict['holiday'] = form.holiday.data
-          dict['workingday'] = form.holiday.data
+          dict['holiday'] = float(form.holiday.data)
+          dict['workingday'] = float(form.holiday.data)
           weather = form.weather.data
           dict['weather_' + str(weather)] = 1
           dict['temp'] = form.temperature.data
           dict['humidity'] = form.humidity.data
-          dict['windspeed'] = form.windspeed.data
+          dict['windspeed'] = float(form.windspeed.data)
           dict['atemp'] = round(feels_like_temperature(dict['temp'],dict['humidity']),2)
           dict = get_season(dict)
-          
-          return f'{dict}'
+          dict.pop('dt')
+          dict = [dict]
+          dict = f'{dict}'
+
+          cwd = os.getcwd()
+          pickle_uri = cwd + '\\model_test.pkl'
+          pred = prediction(pickle_uri, dict)
+
+          return pred#redirection quelque part
 
      return render_template('predict.html', form=form)

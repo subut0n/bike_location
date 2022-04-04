@@ -23,6 +23,6 @@ class AddPrediction(FlaskForm):
     # atemperature = FloatField(label='Température ressentie', validators=[DataRequired(), NumberRange(min=80,max=100)])
     humidity = IntegerField(label='Humidité', validators=[DataRequired(), NumberRange(min=0,max=100,
                             message="L'humidité doit être comprise entre 0 et 100.")])
-    windspeed = StringField(label='Force du vent en km/h', validators=[DataRequired(),
+    windspeed = FloatField(label='Force du vent en km/h', validators=[DataRequired(),
                            Regexp('^\d+\.?\d*$', message='La vitesse du vent doit être un nombre décimal positif.')])
     submit = SubmitField(label="Prédiction")

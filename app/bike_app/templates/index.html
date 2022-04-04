@@ -3,14 +3,14 @@
 {% block body %}
 
 <section class="presentation">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id, ut odit reprehenderit rerum rem debitis nam alias earum provident iste sunt officiis fugiat perspiciatis error nobis iusto! Recusandae, praesentium?</p>
+    <p>Cette page permet d'obtenir une prediction en direct de l'utilisation du reseau de velos en libre service VLille en fonction des donnees meteorologiques ! </p>
 </section>
 
 <main class="daily-recap">
 
-    <section class='col-md-3 mx-auto meteo-now'>
+    <section class='meteo-now'>
         <div class="date">
-            <h3>Date of the day :</h3>
+            <h3>Date du jour:</h3>
             <p>{{ data[0]['dt'] }}</p>
         </div>
         <div class="weather">
@@ -46,9 +46,9 @@
         </div>
     </section>
 
-    <section class="col-md-6 mx-auto meteo-48h">
+    <section class="meteo-48h">
         <div>
-            <canvas id="myChart" style="width:70%;max-width:1000px;height:400px"></canvas>
+            <canvas id="myChart" style="width:100%;max-width:1000px;height:600px;"></canvas>
         </div>
         <script>
             var xValues = [];
@@ -57,7 +57,7 @@
             {% endfor %}
 
             var yValues = {{ pred }};
-            var color = ["blue"];
+            var color = ["red"];
             
             new Chart("myChart", {
                 type: "bar",

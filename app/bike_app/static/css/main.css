@@ -1,6 +1,157 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
+* {
+    background-color: black;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white
+}
+
+.presentation p {
+    color: white
+}
+
+.meteo-now {
+    align-items: center;
+    justify-content: center;
+    background-color: #111111;
+}
+
+.date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.date h3{
+    color: white
+}
+
+.date p{
+    color: red;
+}
+
+.weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.weather h3{
+    color: white
+}
+
+.weather p{
+    color: red;
+}
+
+.temperature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.temperature h3{
+    color: white
+}
+
+.temperature p{
+    color: red;
+}
+
+.atemperature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.atemperature h3{
+    color: white
+}
+
+.atemperature p{
+    color: red;
+}
+
+.windforce {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.windforce h3{
+    color: white
+}
+
+.windforce p{
+    color: red;
+}
+
+.humidity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.humidity h3{
+    color: white
+}
+
+.humidity p{
+    color: red;
+}
+
+.registered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.registered h3{
+    color: white
+}
+
+.registered p{
+    color: red;
+}
+
+.meteo-48h {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111111;
+    color: white;
+    
 }
 
 .error {

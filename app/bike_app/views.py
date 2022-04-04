@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 
 basedir = os.getcwd()
-db = pd.read_csv(os.path.join(basedir, '..\\csv\\train_modifie.csv'))
+db = pd.read_csv(os.path.join(basedir, '../csv/train_modifie.csv'))
 
 app.config.from_object('config')
 
@@ -27,7 +27,7 @@ def index():
 
      data = get_48h_data(dataAPI['hourly'], feature_names)
      cwd = os.getcwd()
-     pickle_uri = cwd + '\\model_test.pkl'
+     pickle_uri = cwd + '/model_test.pkl'
      pred = eval(prediction(pickle_uri, data))
      pred = list(np.round(pred))  
      data = eval(data)

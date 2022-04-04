@@ -27,23 +27,17 @@ def index():
 
      data = get_48h_data(dataAPI['hourly'], feature_names)
      cwd = os.getcwd()
-<<<<<<< HEAD
 
-     pickle_registered = cwd + '\\model_registered.pkl'
+     pickle_registered = cwd + '/model_registered.pkl'
      pred_registered = eval(prediction(pickle_registered, data))
      pred_registered = list(np.round(pred_registered))
 
-     pickle_casual = cwd + '\\model_casual.pkl'
+     pickle_casual = cwd + '/model_casual.pkl'
      pred_casual = eval(prediction(pickle_casual, data))
      pred_casual = list(np.round(pred_casual))
 
      pred_count = pred_registered + pred_casual
 
-=======
-     pickle_uri = cwd + '/model_test.pkl'
-     pred = eval(prediction(pickle_uri, data))
-     pred = list(np.round(pred))  
->>>>>>> f2eb92b9ac632328ecb095f3b0b70d5e4f42b38a
      data = eval(data)
 
      return render_template('index.html', data=data, pred_registered=pred_registered, pred_casual=pred_casual, pred_count=pred_count)
@@ -83,10 +77,10 @@ def predict():
           dict = f'{dict}'
 
           cwd = os.getcwd()
-          pickle_registered = cwd + '\\model_registered.pkl'
+          pickle_registered = cwd + '/model_registered.pkl'
           pred_registered = prediction(pickle_registered, dict)
 
-          pickle_casual = cwd + '\\model_casual.pkl'
+          pickle_casual = cwd + '/model_casual.pkl'
           pred_casual = prediction(pickle_casual, dict)
 
           pred_count = pred_registered + pred_casual

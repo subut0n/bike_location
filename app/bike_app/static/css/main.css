@@ -133,7 +133,7 @@
     justify-content: center;
     align-items: center;
     background-color: black;
-    width: 500px;
+    width: 800px;
     height: 100px;
     margin: auto;
 }
@@ -145,8 +145,27 @@
     color: red;
 }
 
+.casual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.casual h3{
+    color: white
+}
+
+.casual p{
+    color: red;
+}
+
 .meteo-48h {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #111111;

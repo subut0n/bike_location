@@ -40,14 +40,14 @@
         {{ form.humidity.label }}
         {{ form.humidity(value="%", size=10, class="form-control", min='0', max='100') }}
         {% for error in form.humidity.errors %}
-        <p class="error" >{{ error }}</p>
+            <p class="error" >{{ error }}</p>
         {% endfor%}
         <br>
 
         {{ form.windspeed.label }}
         {{ form.windspeed(size=32, class="form-control") }}
         {% for error in form.windspeed.errors %}
-        <p class="error" >{{ error }}</p>
+            <p class="error" >{{ error }}</p>
         {% endfor%}
         <br>
 

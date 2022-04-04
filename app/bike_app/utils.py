@@ -20,7 +20,7 @@ def get_48h_data(dataAPI, feature_names):
     return f'{data}'
 
 def get_encoded_features_name(data, features_to_encode):
-    data = data.drop(['Unnamed: 0', 'casual', 'registered', 'count', 'HI'], axis=1)
+    data = data.drop(['casual', 'registered'], axis=1)
     ohe = make_column_transformer((OneHotEncoder(), features_to_encode), remainder='passthrough')
     ohe.fit(data)
     data_ohe = ohe.transform(data)

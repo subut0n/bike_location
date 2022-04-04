@@ -42,13 +42,19 @@
 
         <div class="registered">
             <h3>Number of registered :</h3>
-            <p>{{ pred[0]|int }}</p>
+            <p>{{ pred_registered[0]|int }}</p>
         </div>
+
+        <div class="casual">
+            <h3>Number of casual :</h3>
+            <p>{{ pred_casual[0]|int }}</p>
+        </div>
+
     </section>
 
-    <section class="col-md-6 mx-auto meteo-48h">
+    <section class="meteo-48h">
         <div>
-            <canvas id="myChart" style="width:70%;max-width:1000px;height:400px"></canvas>
+            <canvas id="myChart1" style="width:70%;max-width:1000px;height:300px"></canvas>
         </div>
         <script>
             var xValues = [];
@@ -56,10 +62,10 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
-            var yValues = {{ pred }};
+            var yValues = {{ pred_registered }};
             var color = ["blue"];
             
-            new Chart("myChart", {
+            new Chart("myChart1", {
                 type: "bar",
                 data: {
                     labels: xValues,
@@ -87,6 +93,121 @@
                                 },
                                 display: true,
                                 text: 'Predicted number of registered'
+                            }
+                        },
+                        x: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Time (hour)'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+
+    <section class="meteo-48h">
+        <div>
+            <canvas id="myChart2" style="width:70%;max-width:1000px;height:300px"></canvas>
+        </div>
+        <script>
+            var xValues = [];
+            {% for dict in data %}
+                xValues.push({{ dict['hours'] }});
+            {% endfor %}
+
+            var yValues = {{ pred_casual }};
+            var color = ["red"];
+            
+            new Chart("myChart2", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                    label: "Predicted number of casual",
+                    backgroundColor: color,
+                    data: yValues
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            font: {
+                                    size: 36
+                            },
+                            display: true,
+                            text: 'Predicted number of casual as a function of time'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Predicted number of casual'
+                            }
+                        },
+                        x: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Time : hour'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+    <section class="meteo-48h">
+        <div>
+            <canvas id="myChart3" style="width:70%;max-width:1000px;height:300px"></canvas>
+        </div>
+        <script>
+            var xValues = [];
+            {% for dict in data %}
+                xValues.push({{ dict['hours'] }});
+            {% endfor %}
+    
+            var yValues = {{ pred_count }};
+            var color = ["purple"];
+            
+            new Chart("myChart3", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                    label: "Predicted number of count",
+                    backgroundColor: color,
+                    data: yValues
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            font: {
+                                    size: 36
+                            },
+                            display: true,
+                            text: 'Predicted number of count as a function of time'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Predicted number of count'
                             }
                         },
                         x: {

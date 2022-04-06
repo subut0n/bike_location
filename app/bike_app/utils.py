@@ -5,6 +5,7 @@ import pickle as pkl
 from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
+import numpy as np
 
 def load_dataAPI(lat, long, api_key):
      url = 'https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&appid={}'.format(lat, long, api_key)
@@ -15,7 +16,6 @@ def load_dataAPI(lat, long, api_key):
 def get_48h_data(dataAPI, feature_names):
     dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
     data = []
-
     for dict in dataAPI:
         data.append(data_formatting(dict, feature_names))
     return f'{data}'
@@ -35,7 +35,6 @@ def get_encoded_features_name(data, features_to_encode):
 
 
 def data_formatting(data_1h_API, feature_names):
-    # keys correspond aux clés du dataset après onehotencodage
 
     # On extrait les données nécessaires pour la prédiction
     timestamp = data_1h_API['dt']
@@ -72,14 +71,6 @@ def data_formatting(data_1h_API, feature_names):
     data_1h_dict['dt'] = data_1h_dict['dt'].strftime("%A, %Y-%m-%d, %H:%M:%S")
 
     return data_1h_dict
-
-def prediction(pickle_uri, data):
-     with open(pickle_uri, 'rb') as pickle_file:
-          model = pkl.load(pickle_file)
-    #  data = ast.literal_eval(data)
-     data = pd.DataFrame(eval(data))
-     pred = list(model.predict(data))
-     return f'{pred}'
 
 def feels_like_temperature(temp,humidity):
     # Heat index (indice de chaleur) ; en degré celsius
@@ -144,3 +135,42 @@ def get_workingday(data_1h_dict, weekday):
     else:
         data_1h_dict['workingday'] = 1
     return data_1h_dict
+
+def prediction(pickle_uri, data):
+     with open(pickle_uri, 'rb') as pickle_file:
+          model = pkl.load(pickle_file)
+     data = pd.DataFrame(eval(data))
+     pred = list(model.predict(data))
+     pred = [int(np.round(p)) for p in pred]
+
+     return f'{pred}'
+
+def data_formatting_segmentation(data_1h_API):
+    
+    # Reformatage des données issues de l'API en une forme qui nous convient
+    keys = ['temp', 'feels_like', 'humidity', 'wind_speed']
+    new_keys = ['temp', 'atemp', 'humidity', 'windspeed']
+    data = {}
+    for key, new_key in zip(keys, new_keys):
+        data[new_key] = data_1h_API[key]
+    data['temp'] = round(data['temp'] - 273.15, 2)
+    data['atemp'] = round(data['atemp'] - 273.15, 2)
+
+    return data
+
+def get_48h_data_segmentation(dataAPI):
+    dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
+    data = []
+
+    for dict in dataAPI:
+        data.append(data_formatting_segmentation(dict))
+    return f'{data}'
+
+def prediction_segmentation(pickle_uri, data):
+
+    with open(pickle_uri, 'rb') as pickle_file:
+        model = pkl.load(pickle_file)
+
+    data = pd.DataFrame(eval(data))
+    clusters = list(model.predict(data))
+    return f'{clusters}'

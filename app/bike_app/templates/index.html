@@ -41,12 +41,12 @@
 
         <div class="registered">
             <h3>Number of registered :</h3>
-            <p>{{ pred_registered[0]|int }}</p>
+            <p>{{ pred['registered'][0] }}</p>
         </div>
 
         <div class="casual">
             <h3>Number of casual :</h3>
-            <p>{{ pred_casual[0]|int }}</p>
+            <p>{{ pred['casual'][0] }}</p>
         </div>
 
 
@@ -62,7 +62,7 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
-            var yValues = {{ pred_registered }};
+            var yValues = {{ pred['registered'] }};
             var color = ["red"];
             
             new Chart("myChart1", {
@@ -119,7 +119,7 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
-            var yValues = {{ pred_casual }};
+            var yValues = {{ pred['casual'] }};
             var color = ["blue"];
             
             new Chart("myChart2", {
@@ -177,7 +177,7 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
-            var yValues = {{ pred_count }};
+            var yValues = {{ pred['count'] }};
             var color = ["purple"];
             
             new Chart("myChart3", {

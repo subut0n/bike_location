@@ -41,32 +41,41 @@
         {{ form.date(size=32, class="form-control") }}
         <br>
 
-        {{ form.weather.label }}
-        {{ form.weather(size=32, class="form-control") }}
+        {{ form.hour.label }}
+        {{ form.hour(size=1, class="form-control-select") }}
         <br>
+        <div>
+            {{ form.weather.label }}<br>
+            {{ form.weather(size=1, class="form-control-select") }}
+        </div>
 
         {{ form.holiday.label }}
-        {{ form.holiday(size=32, class="form-control") }}
+        {{ form.holiday(size=1, class="form-control-select") }}
         <br>
-        
+
         {{ form.workingday.label }}
-        {{ form.workingday(size=32, class="form-control") }}
+        {{ form.workingday(size=1, class="form-control-select") }}
         <br>
 
         {{ form.temperature.label }}
         {{ form.temperature(size=32, class="form-control") }}
-        <br>
-
-        {{ form.atemperature.label }}
-        {{ form.atemperature(size=32, class="form-control") }}
+        {% for error in form.temperature.errors %}
+        <p class="error" >{{ error }}</p>
+        {% endfor%}
         <br>
 
         {{ form.humidity.label }}
-        {{ form.humidity(size=32, class="form-control") }}
+        {{ form.humidity(value="%", size=10, class="form-control", min='0', max='100') }}
+        {% for error in form.humidity.errors %}
+            <p class="error" >{{ error }}</p>
+        {% endfor%}
         <br>
 
         {{ form.windspeed.label }}
         {{ form.windspeed(size=32, class="form-control") }}
+        {% for error in form.windspeed.errors %}
+            <p class="error" >{{ error }}</p>
+        {% endfor%}
         <br>
 
         {{ form.submit(class="buttonsubmit",id="button-add") }}

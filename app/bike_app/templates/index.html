@@ -2,73 +2,233 @@
 
 {% block body %}
 <section class="presentation">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id, ut odit reprehenderit rerum rem debitis nam alias earum provident iste sunt officiis fugiat perspiciatis error nobis iusto! Recusandae, praesentium?</p>
+    <p>Cette page permet d'obtenir une prediction en direct de l'utilisation du reseau de velos en libre service VLille en fonction des donnees meteorologiques ! </p>
 </section>
 
 <main class="daily-recap">
 
+
     <section class="date">
         <h2>Date of the day :</h2>
-<<<<<<< HEAD
-        
-=======
+
         <p>{{ today_prediction['date'] }}</p>
->>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
+
+    <section class='meteo-now'>
+        <div class="date">
+            <h3>Date du jour:</h3>
+            <p>{{ data[0]['dt'] }}</p>
+        </div>
+        <div class="weather">
+            <h3>Conditions meteorologiques :</h3>
+                <p>
+                    {% for i in range(4) %}
+                        {% if data[0]['weather_' + (i+1)|string] != 0%}
+                            {{ data[0]['weather_' + (i+1)|string] }}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+        </div>
+        <div class="temperature">
+            <h3>Temperature :</h3>
+            <p>{{ data[0]['temp'] }}</p>
+        </div>
+        <div class="atemperature">
+            <h3>Temperature ressentie :</h3>
+            <p>{{ data[0]['atemp'] }}</p>
+        </div>
+        <div class="windforce">
+            <h3>Force du vent :</h3>
+            <p>{{ data[0]['windspeed'] }}</p>
+        </div>
+        <div class="humidity">
+            <h3>Humidite :</h3>
+            <p>{{ data[0]['humidity'] }}</p>
+        </div>
+
+        <div class="registered">
+            <h3>Number of registered :</h3>
+            <p>{{ pred_registered[0]|int }}</p>
+        </div>
+
+        <div class="casual">
+            <h3>Number of casual :</h3>
+            <p>{{ pred_casual[0]|int }}</p>
+        </div>
+
+
     </section>
-    
-    <section class='meteo'>
-        <section class="weather">
-<<<<<<< HEAD
-            <h2>Weather :</h2>
+
+    <section class="meteo-48h">
+        <div>
+            <canvas id="myChart1" style="width:100%;max-width:1000px;height:400px"></canvas>
+        </div>
+        <script>
+            var xValues = [];
+            {% for dict in data %}
+                xValues.push({{ dict['hours'] }});
+            {% endfor %}
+
+            var yValues = {{ pred_registered }};
+            var color = ["red"];
             
-=======
-            <h2>Conditions meteorologiques :</h2>
-            <p>{{ today_prediction['weather'] }}</p>
-        </section>
-        <section class="temperature">
-            <h2>Temperature :</h2>
-            <p>{{ today_prediction['temperature'] }}</p>
-        </section>
-        <section class="atemperature">
-            <h2>Temperature ressentie :</h2>
-            <p>{{ today_prediction['atemperature'] }}</p>
-        </section>
-        <section class="windforce">
-            <h2>Force du vent :</h2>
-            <p>{{ today_prediction['windforce'] }}</p>
-        </section>
-        <section class="humidity">
-            <h2>Humidite :</h2>
-            <p>{{ today_prediction['humidity'] }}</p>
->>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
-        </section>
+            new Chart("myChart1", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                    label: "Predicted number of registered",
+                    backgroundColor: color,
+                    data: yValues
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            font: {
+                                    size: 36
+                            },
+                            display: true,
+                            text: 'Predicted number of registered as a function of time'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Predicted number of registered'
+                            }
+                        },
+                        x: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Time (hour)'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+
+    <section class="meteo-48h">
+        <div>
+            <canvas id="myChart2" style="width:100%;max-width:1000px;height:400px"></canvas>
+        </div>
+        <script>
+            var xValues = [];
+            {% for dict in data %}
+                xValues.push({{ dict['hours'] }});
+            {% endfor %}
+
+            var yValues = {{ pred_casual }};
+            var color = ["blue"];
+            
+            new Chart("myChart2", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                    label: "Predicted number of casual",
+                    backgroundColor: color,
+                    data: yValues
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            font: {
+                                    size: 36
+                            },
+                            display: true,
+                            text: 'Predicted number of casual as a function of time'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Predicted number of casual'
+                            }
+                        },
+                        x: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Time : hour'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
     </section>
 
-    <section class="registered">
-        <h2>Number of registered :</h2>
-<<<<<<< HEAD
-        
-=======
-        <p>{{ today_prediction['registered'] }}</p>
->>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
-    </section>
+    <section class="meteo-48h">
+        <div>
+            <canvas id="myChart3" style="width:100%;max-width:1000px;height:400px"></canvas>
+        </div>
+        <script>
+            var xValues = [];
+            {% for dict in data %}
+                xValues.push({{ dict['hours'] }});
+            {% endfor %}
 
-    <section class="casual">
-        <h2>Number of casual :</h2>
-<<<<<<< HEAD
-       
-=======
-        <p>{{ today_prediction['casual'] }}</p>
->>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
-    </section>
-
-    <section class="count">
-        <h2>Total count :</h2>
-<<<<<<< HEAD
-        
-=======
-        <p>{{ today_prediction['count'] }}</p>
->>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
+            var yValues = {{ pred_count }};
+            var color = ["purple"];
+            
+            new Chart("myChart3", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                    label: "Predicted number of count",
+                    backgroundColor: color,
+                    data: yValues
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            font: {
+                                    size: 36
+                            },
+                            display: true,
+                            text: 'Predicted number of count as a function of time'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Predicted number of count'
+                            }
+                        },
+                        x: {
+                            title: {
+                                font: {
+                                    size: 22
+                                },
+                                display: true,
+                                text: 'Time : hour'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
     </section>
 
 </main>

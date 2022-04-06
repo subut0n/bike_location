@@ -15,6 +15,7 @@ def load_dataAPI(lat, long, api_key):
 def get_48h_data(dataAPI, feature_names):
     dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
     data = []
+
     for dict in dataAPI:
         data.append(data_formatting(dict, feature_names))
     return f'{data}'
@@ -31,6 +32,7 @@ def get_encoded_features_name(data, features_to_encode):
         features_name[i] = ohe.get_feature_names_out()[i].replace("onehotencoder__","").replace("remainder__","")
     data = data.rename(columns=features_name)
     return data.columns
+
 
 def data_formatting(data_1h_API, feature_names):
     # keys correspond aux clés du dataset après onehotencodage
@@ -110,7 +112,7 @@ def get_weather(data_1h_dict):
     weather_labels = ['weather_1', 'weather_2', 'weather_3', 'weather_4']
     for i, weather in enumerate(weathers):
         if data_1h_dict['weather'] in weather:
-            data_1h_dict[weather_labels[i]] = i+1
+            data_1h_dict[weather_labels[i]] = 1
     data_1h_dict.pop('weather')
     return data_1h_dict
 

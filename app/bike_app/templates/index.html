@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
 <section class="presentation">
     <p>Cette page permet d'obtenir une prediction en direct de l'utilisation du reseau de velos en libre service VLille en fonction des donnees meteorologiques ! </p>
 </section>
@@ -49,6 +48,7 @@
             <h3>Number of casual :</h3>
             <p>{{ pred_casual[0]|int }}</p>
         </div>
+
 
     </section>
 
@@ -178,7 +178,7 @@
             {% for dict in data %}
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
-    
+
             var yValues = {{ pred_count }};
             var color = ["purple"];
             
@@ -226,6 +226,7 @@
             });
         </script>
     </section>
+
 </main>
 
 {% endblock %}

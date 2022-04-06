@@ -1,12 +1,9 @@
-* {
-    background-color: black;
-}
-
 .title {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white
+    color: white;
+    background-color: #111111;
 }
 
 .presentation p {
@@ -133,7 +130,7 @@
     justify-content: center;
     align-items: center;
     background-color: black;
-    width: 800px;
+    width: 500px;
     height: 100px;
     margin: auto;
 }

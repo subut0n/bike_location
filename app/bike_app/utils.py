@@ -15,12 +15,20 @@ def get_48h_data(dataAPI, feature_names):
     dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
     data = []
     for i, dict in enumerate(dataAPI):
+<<<<<<< HEAD
         data.append(data_formatting(dict, feature_names))
     return f'{data}'
 
 
 def data_formatting(currentDataAPI, feature_names):
      # keys correspond aux clés du dataset après onehotencodage
+=======
+        data.append(data_formating(dict))
+    return f'{data}'
+
+
+def data_formating(currentDataAPI):
+>>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
 
      # On extrait les données nécessaires pour la prédiction
      time_stamp = currentDataAPI['dt']

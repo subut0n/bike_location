@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
 
 <h1>Prédiction</h1>
 
@@ -30,4 +31,46 @@
     {{ form.submit(class="btn btn-lg", id="button")}}
 </div>
   
+=======
+<div class='container'>
+    <h1>Nouvelle Prediction</h1>
+    <form method="POST" class="form-register">
+        {{ form.hidden_tag() }}
+
+        {{ form.date.label }}
+        {{ form.date(size=32, class="form-control") }}
+        <br>
+
+        {{ form.weather.label }}
+        {{ form.weather(size=32, class="form-control") }}
+        <br>
+
+        {{ form.holiday.label }}
+        {{ form.holiday(size=32, class="form-control") }}
+        <br>
+        
+        {{ form.workingday.label }}
+        {{ form.workingday(size=32, class="form-control") }}
+        <br>
+
+        {{ form.temperature.label }}
+        {{ form.temperature(size=32, class="form-control") }}
+        <br>
+
+        {{ form.atemperature.label }}
+        {{ form.atemperature(size=32, class="form-control") }}
+        <br>
+
+        {{ form.humidity.label }}
+        {{ form.humidity(size=32, class="form-control") }}
+        <br>
+
+        {{ form.windspeed.label }}
+        {{ form.windspeed(size=32, class="form-control") }}
+        <br>
+
+        {{ form.submit(class="buttonsubmit",id="button-add") }}
+    </form>
+</div>
+>>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
 {% endblock %}

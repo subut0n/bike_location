@@ -1,4 +1,4 @@
-* {
+header {
     background-color: black;
 }
 
@@ -10,7 +10,11 @@
 }
 
 .presentation p {
-    color: white
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    margin-bottom: 0;
 }
 
 .meteo-now {

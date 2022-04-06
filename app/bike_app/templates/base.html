@@ -14,12 +14,12 @@
         <ul class="nav">
             <li class="today"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Veloc'City Today</a></li>
             <li class="manual"><a href="{{ url_for('predict') }}" class="nav-link">Manual prediction</a></li>
-          </ul>
+        </ul>
+        <div class='title'>
+            <h1>Veloc'City report</h1>
+        </div>
     </header>
 
-    <div class='title'>
-        <h1>Veloc'City report</h1>
-    </div>
     {% block body %}
 
     {% endblock %}

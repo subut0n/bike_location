@@ -1,4 +1,4 @@
-season,holiday,workingday,weather,temp,atemp,humidity,windspeed,casual,registered,sunrisen,day_length,months,hours,years,week_days
+season,holiday,workingday,weather,temp,atemp,humidity,windspeed,casual,registered,day_light,day_length,months,hours,years,week_days
 4,0,0,1,9.84,14.395,81,0.0,3,13,0,34377.0,1,0,2011,6
 4,0,0,1,9.02,13.635,80,0.0,8,32,0,34377.0,1,1,2011,6
 4,0,0,1,9.02,13.635,80,0.0,5,27,0,34377.0,1,2,2011,6

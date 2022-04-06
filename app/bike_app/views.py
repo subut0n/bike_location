@@ -27,7 +27,6 @@ def index():
 
      data = get_48h_data(dataAPI['hourly'], feature_names)
      cwd = os.getcwd()
-<<<<<<< HEAD
 
      pickle_registered = cwd + '\\model_registered.pkl'
      pred_registered = eval(prediction(pickle_registered, data))
@@ -39,11 +38,6 @@ def index():
 
      pred_count = pred_registered + pred_casual
 
-=======
-     pickle_uri = cwd + '/model_test.pkl'
-     pred = eval(prediction(pickle_uri, data))
-     pred = list(np.round(pred))  
->>>>>>> f2eb92b9ac632328ecb095f3b0b70d5e4f42b38a
      data = eval(data)
 
      return render_template('index.html', data=data, pred_registered=pred_registered, pred_casual=pred_casual, pred_count=pred_count)

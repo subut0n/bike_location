@@ -62,7 +62,8 @@ def data_formatting(data_1h_API, feature_names):
 
     data_1h_dict['hours'] = data_1h_dict['dt'].hour
     data_1h_dict['years'] = data_1h_dict['dt'].year
-    data_1h_dict = get_months(data_1h_dict)
+    data_1h_dict['months'] = data_1h_dict['dt'].month
+    # data_1h_dict = get_months(data_1h_dict)
     data_1h_dict, weekday = get_week_day(data_1h_dict, timestamp)
 
     data_1h_dict = get_season(data_1h_dict)
@@ -74,7 +75,6 @@ def data_formatting(data_1h_API, feature_names):
 def prediction(pickle_uri, data):
      with open(pickle_uri, 'rb') as pickle_file:
           model = pkl.load(pickle_file)
-    #  data = ast.literal_eval(data)
      data = pd.DataFrame(eval(data))
      pred = list(model.predict(data))
      return f'{pred}'
@@ -110,8 +110,9 @@ def get_weather(data_1h_dict):
     weather_labels = ['weather_1', 'weather_2', 'weather_3', 'weather_4']
     for i, weather in enumerate(weathers):
         if data_1h_dict['weather'] in weather:
-            data_1h_dict[weather_labels[i]] = i+1
+            data_1h_dict[weather_labels[i]] = 1
     data_1h_dict.pop('weather')
+
     return data_1h_dict
 
 def get_season(data_1h_dict):
@@ -124,11 +125,11 @@ def get_season(data_1h_dict):
             data_1h_dict['season_' + str(i+1)] = 1
             return data_1h_dict
 
-def get_months(data_1h_dict):
-    month = data_1h_dict['dt'].month
-    month_label = 'months_' + str(month)
-    data_1h_dict[month_label] = 1
-    return data_1h_dict
+# def get_months(data_1h_dict):
+#     month = data_1h_dict['dt'].month
+#     month_label = 'months_' + str(month)
+#     data_1h_dict[month_label] = 1
+#     return data_1h_dict
 
 def get_week_day(data_1h_dict, timestamp):
     weekday = datetime.fromtimestamp(timestamp).weekday()+1

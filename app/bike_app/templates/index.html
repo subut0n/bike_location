@@ -49,16 +49,12 @@
             <h3>Number of casual :</h3>
             <p>{{ pred_casual[0]|int }}</p>
         </div>
-
+        
     </section>
 
     <section class="meteo-48h">
         <div>
-<<<<<<< HEAD
             <canvas id="myChart1" style="width:70%;max-width:1000px;height:300px"></canvas>
-=======
-            <canvas id="myChart" style="width:100%;max-width:1000px;height:600px;"></canvas>
->>>>>>> f2eb92b9ac632328ecb095f3b0b70d5e4f42b38a
         </div>
         <script>
             var xValues = [];
@@ -66,13 +62,8 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
-<<<<<<< HEAD
             var yValues = {{ pred_registered }};
             var color = ["blue"];
-=======
-            var yValues = {{ pred }};
-            var color = ["red"];
->>>>>>> f2eb92b9ac632328ecb095f3b0b70d5e4f42b38a
             
             new Chart("myChart1", {
                 type: "bar",
@@ -233,6 +224,7 @@
             });
         </script>
     </section>
+
 </main>
 
 {% endblock %}

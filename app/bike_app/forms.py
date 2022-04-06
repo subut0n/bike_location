@@ -9,17 +9,6 @@ class AddPrediction(FlaskForm):
     # year = StringField(label='Année')
     # month = StringField(label='Mois')
     # weekday = StringField(label='Jour de la semaine')
-<<<<<<< HEAD
-    # hour = StringField(label='Heure')
-    season = StringField(label='Saison') #2 condition
-    weather = StringField(label='Conditions météorologiques')
-    holiday = StringField(label='Vacances')
-    workingday = StringField(label='Journée de travail')
-    temperature = StringField(label='Température') #3 mesure
-    atemperature = StringField(label='Température ressentie')
-    humidity = StringField(label='Humidité')
-    windspeed = StringField(label='Force du vent en km/h')
-=======
     hour = IntegerField(label='Heure', validators=[InputRequired(), NumberRange(min=0, max=23)]) #2 condition
     # season = SelectField(label='Saison')
     weather = SelectField(label='Conditions météorologiques',
@@ -36,5 +25,4 @@ class AddPrediction(FlaskForm):
                             message="L'humidité doit être comprise entre 0 et 100.")])
     windspeed = StringField(label='Force du vent en km/h', validators=[InputRequired(),
                            Regexp('^\d+\.?\d*$', message='La vitesse du vent doit être un nombre décimal positif.')])
->>>>>>> 1720c812d42c019302d7ce25ff9a72d10e267743
     submit = SubmitField(label="Prédiction")

@@ -5,33 +5,6 @@
 {% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
-
-<h1>Prédiction</h1>
-
-<div class="'container">
-    <div class="input-group mb-3">
-        {{ form.date(class="form-control", placeholder="Date") }}
-    </div>
-    <div class="input-group mb-3">
-        {{ form.hour(class="form-control", placeholder="Heure") }}
-    </div>
-    <div class="input-group mb-3">
-        {{ form.temperature(class="form-control", placeholder="Température") }}
-    </div>
-    <div class="input-group mb-3">
-        {{ form.atemperature(class="form-control", placeholder="Température ressentie") }}
-    </div>
-    <div class="input-group mb-3">
-        {{ form.humidity(class="form-control", placeholder="Humidité") }}
-    </div>
-    <div class="input-group mb-3">
-        {{ form.windspeed(class="form-control", placeholder="Force du vent (en km/h)") }}
-    </div>
-    {{ form.submit(class="btn btn-lg", id="button")}}
-</div>
-  
-=======
 <div class='container'>
     <h1>Nouvelle Prediction</h1>
     <form method="POST" class="form-register">
@@ -81,5 +54,4 @@
         {{ form.submit(class="buttonsubmit",id="button-add") }}
     </form>
 </div>
->>>>>>> a9aeaa32bda20859a32b6fe4b0ddaf0eb5a032e3
 {% endblock %}

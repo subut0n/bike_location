@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Apprenant/Documents/git/machine_learning/location_velo/bike_location/notebooks/mickael/mlruns/1/15d5b2bf5b3e4692b6c685dfa4757dfd/artifacts
+end_time: 1649095696372
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 15d5b2bf5b3e4692b6c685dfa4757dfd
+run_uuid: 15d5b2bf5b3e4692b6c685dfa4757dfd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1649095689914
+status: 3
+tags: []
+user_id: micka

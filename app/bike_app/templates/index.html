@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
 <section class="presentation">
     <p>Cette page permet d'obtenir une prediction en direct de l'utilisation du reseau de velos en libre service VLille en fonction des donnees meteorologiques ! </p>
 </section>
@@ -41,20 +40,39 @@
         </div>
 
         <div class="registered">
+<<<<<<< HEAD
             <h3>Number of registered :</h3>
-            <p>{{ pred_registered[0]|int }}</p>
+            <p>{{ pred['registered'][0] }}</p>
         </div>
 
         <div class="casual">
             <h3>Number of casual :</h3>
+            <p>{{ pred['casual'][0] }}</p>
+=======
+            <h3>Utilisateurs enregistres :</h3>
+            <p>{{ pred_registered[0]|int }}</p>
+        </div>
+
+        <div class="casual">
+            <h3>Utilisateur occasionnel :</h3>
             <p>{{ pred_casual[0]|int }}</p>
+>>>>>>> 42d45e99645595b212e2f190089dd979c43ffca5
+        </div>
+
+        <div class="count">
+            <h3>Total des usagers :</h3>
+            <p>{{ (pred_casual[0] + pred_registered[0])|int }}</p>
         </div>
         
     </section>
 
     <section class="meteo-48h">
         <div>
+<<<<<<< HEAD
             <canvas id="myChart1" style="width:70%;max-width:1000px;height:300px"></canvas>
+=======
+            <canvas id="myChart1" style="width:100%;max-width:1000px;height:400px"></canvas>
+>>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
         </div>
         <script>
             var xValues = [];
@@ -62,8 +80,13 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
+<<<<<<< HEAD
             var yValues = {{ pred_registered }};
             var color = ["blue"];
+=======
+            var yValues = {{ pred['registered'] }};
+            var color = ["red"];
+>>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
             
             new Chart("myChart1", {
                 type: "bar",
@@ -111,7 +134,7 @@
 
     <section class="meteo-48h">
         <div>
-            <canvas id="myChart2" style="width:70%;max-width:1000px;height:300px"></canvas>
+            <canvas id="myChart2" style="width:100%;max-width:1000px;height:400px"></canvas>
         </div>
         <script>
             var xValues = [];
@@ -119,8 +142,8 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
-            var yValues = {{ pred_casual }};
-            var color = ["red"];
+            var yValues = {{ pred['casual'] }};
+            var color = ["blue"];
             
             new Chart("myChart2", {
                 type: "bar",
@@ -129,7 +152,8 @@
                     datasets: [{
                     label: "Predicted number of casual",
                     backgroundColor: color,
-                    data: yValues
+                    data: yValues,
+                    color: '#fcedd8'
                     }]
                 },
                 options: {
@@ -169,15 +193,15 @@
 
     <section class="meteo-48h">
         <div>
-            <canvas id="myChart3" style="width:70%;max-width:1000px;height:300px"></canvas>
+            <canvas id="myChart3" style="width:100%;max-width:1000px;height:400px"></canvas>
         </div>
         <script>
             var xValues = [];
             {% for dict in data %}
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
-    
-            var yValues = {{ pred_count }};
+
+            var yValues = {{ pred['count'] }};
             var color = ["purple"];
             
             new Chart("myChart3", {

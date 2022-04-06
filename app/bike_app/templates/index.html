@@ -40,15 +40,19 @@
         </div>
 
         <div class="registered">
-            <h3>Number of registered :</h3>
+            <h3>Utilisateurs enregistres :</h3>
             <p>{{ pred_registered[0]|int }}</p>
         </div>
 
         <div class="casual">
-            <h3>Number of casual :</h3>
+            <h3>Utilisateur occasionnel :</h3>
             <p>{{ pred_casual[0]|int }}</p>
         </div>
 
+        <div class="count">
+            <h3>Total des usagers :</h3>
+            <p>{{ (pred_casual[0] + pred_registered[0])|int }}</p>
+        </div>
 
     </section>
 
@@ -79,9 +83,7 @@
                     plugins: {
                         title: {
                             font: {
-                                    size: 36,
-                                    family: 'Niconne',
-                                    color: 
+                                    size: 36
                             },
                             display: true,
                             text: 'Predicted number of registered as a function of time'
@@ -131,7 +133,8 @@
                     datasets: [{
                     label: "Predicted number of casual",
                     backgroundColor: color,
-                    data: yValues
+                    data: yValues,
+                    color: '#fcedd8'
                     }]
                 },
                 options: {

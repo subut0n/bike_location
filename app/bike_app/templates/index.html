@@ -40,6 +40,7 @@
         </div>
 
         <div class="registered">
+<<<<<<< HEAD
             <h3>Number of registered :</h3>
             <p>{{ pred['registered'][0] }}</p>
         </div>
@@ -47,8 +48,21 @@
         <div class="casual">
             <h3>Number of casual :</h3>
             <p>{{ pred['casual'][0] }}</p>
+=======
+            <h3>Utilisateurs enregistres :</h3>
+            <p>{{ pred_registered[0]|int }}</p>
         </div>
 
+        <div class="casual">
+            <h3>Utilisateur occasionnel :</h3>
+            <p>{{ pred_casual[0]|int }}</p>
+>>>>>>> 42d45e99645595b212e2f190089dd979c43ffca5
+        </div>
+
+        <div class="count">
+            <h3>Total des usagers :</h3>
+            <p>{{ (pred_casual[0] + pred_registered[0])|int }}</p>
+        </div>
 
     </section>
 
@@ -129,7 +143,8 @@
                     datasets: [{
                     label: "Predicted number of casual",
                     backgroundColor: color,
-                    data: yValues
+                    data: yValues,
+                    color: '#fcedd8'
                     }]
                 },
                 options: {

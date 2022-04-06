@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 
@@ -61,4 +62,73 @@
             <p> Forfait : {{ clusters[0] }} </p>
         </div>
 </div>
+=======
+{% extends 'base.html' %}
+
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+<h2>Nouvelle Prediction</h2>
+
+<div class='card'>
+    <div class="right-side">
+        <form method="POST" class="form-register">
+            {{ form.hidden_tag() }}
+            <div class="form-date">
+                {{ form.date.label }}
+                {{ form.date(size=32, class="form-control") }}
+            </div>
+            <div class="form-hour">
+                {{ form.hour.label }}
+                {{ form.hour(size=1, class="form-control-select") }}
+            </div>
+            <div class="form-weather">
+                {{ form.weather.label }}<br>
+                {{ form.weather(size=1, class="form-control-select") }}
+            </div>
+            <div class="form-holiday">
+                {{ form.holiday.label }}
+                {{ form.holiday(size=1, class="form-control-select") }}
+            </div>
+            <div class="form-workingday">
+                {{ form.workingday.label }}
+                {{ form.workingday(size=1, class="form-control-select") }}
+            </div>
+            <div class="form-temperature">
+                {{ form.temperature.label }}
+                {{ form.temperature(size=32, class="form-control") }}
+                {% for error in form.temperature.errors %}
+                <p class="error" >{{ error }}</p>
+                {% endfor%}
+            </div>
+            <div class="form-humidity">
+                {{ form.humidity.label }}
+                {{ form.humidity(value="%", size=10, class="form-control", min='0', max='100') }}
+                {% for error in form.humidity.errors %}
+                    <p class="error" >{{ error }}</p>
+                {% endfor%}
+            </div>
+            <div class="form-windspeed">
+                {{ form.windspeed.label }}
+                {{ form.windspeed(size=32, class="form-control") }}
+                {% for error in form.windspeed.errors %}
+                    <p class="error" >{{ error }}</p>
+                {% endfor%}
+            </div>
+            <div class="form-submit">
+                {{ form.submit(class="buttonsubmit",id="button-add") }}
+            </div>
+        </form>
+    </div>
+        <div>
+            <p> Nombre d'abonnés : {{ pred['registered'][0] }} </p>
+            <p> Nombre d'utilisateurs occasionnels : {{ pred['casual'][0] }} </p>
+            <p> Total d'utilisateurs : {{ pred['count'] }} </p>
+            <p> Forfait : {{ clusters[0] }} </p>
+        </div>
+</div>
+>>>>>>> 42d45e99645595b212e2f190089dd979c43ffca5
 {% endblock %}

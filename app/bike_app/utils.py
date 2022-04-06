@@ -141,7 +141,7 @@ def prediction(pickle_uri, data):
           model = pkl.load(pickle_file)
      data = pd.DataFrame(eval(data))
      pred = list(model.predict(data))
-     pred = [int(np.round(p)) for p in pred]
+     pred = list(np.round(pred))
 
      return f'{pred}'
 

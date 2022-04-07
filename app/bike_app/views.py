@@ -44,12 +44,12 @@ def index():
      pickle_casual = cwd + '/model_casual.pkl'
      pred_casual = eval(prediction(pickle_casual, data))
      # pred_casual = list(np.round(pred_casual))
-
-     pred = {'registered': pred_registered, 'casual': pred_casual, 'count': pred_registered + pred_casual}
+     pred_count = [pred_registered[i] + pred_casual[i] for i in range(len(pred_casual))]
+     pred = {'registered': pred_registered, 'casual': pred_casual, 'count': pred_count}
      data = eval(data)
      
-     image_url = 'http://openweathermap.org/img/wn/{}@2x.png'.format(data[0]['icon'])
-     image =  requests.get(image_url)
+     # image_url = 'http://openweathermap.org/img/wn/{}@2x.png'.format(data[0]['icon'])
+     # image =  requests.get(image_url)
 
      return render_template('index.html', data=data, pred=pred, clusters=clusters, image=image)
 
@@ -75,7 +75,7 @@ def predict():
           weekday = dict['dt'].weekday()+1
           dict['week_days_' + str(weekday)] = 1
           dict['holiday'] = float(form.holiday.data)
-          dict['workingday'] = float(form.holiday.data)
+          dict['workingday'] = float(form.workingday.data)
           weather = form.weather.data
           dict['weather_' + str(weather)] = 1
           dict['temp'] = form.temperature.data

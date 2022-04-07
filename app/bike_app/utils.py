@@ -45,7 +45,7 @@ def data_formatting(data_1h_API, feature_names):
     timestamp = data_1h_API['dt']
     data_1h_API['dt'] = datetime.fromtimestamp(data_1h_API['dt'])
     data_1h_API['description'] = data_1h_API['weather'][0]['description']
-    data_1h_API['icon'] = data_1h_API['weather'][0]['icon']
+    # data_1h_API['icon'] = data_1h_API['weather'][0]['icon']
     data_1h_API['weather'] = data_1h_API['weather'][0]['id']
     
 
@@ -71,13 +71,18 @@ def data_formatting(data_1h_API, feature_names):
 
     data_1h_dict['hours'] = data_1h_dict['dt'].hour
     data_1h_dict['years'] = data_1h_dict['dt'].year
-    data_1h_dict['months'] = data_1h_dict['dt'].month
-    # data_1h_dict = get_months(data_1h_dict)
+    # data_1h_dict['months'] = data_1h_dict['dt'].month
+    data_1h_dict = get_months(data_1h_dict)
     data_1h_dict, weekday = get_week_day(data_1h_dict, timestamp)
 
     data_1h_dict = get_season(data_1h_dict)
     data_1h_dict = get_workingday(data_1h_dict, weekday)
-    data_1h_dict['dt'] = data_1h_dict['dt'].strftime("%A, %Y-%m-%d, %H:%M:%S")
+    data_1h_dict['dt'] = data_1h_dict['dt'].strftime("%A, %Y-%m-%d, %Hh")
+    days_fr = {'Monday':'Lundi', 'Tuesday':'Mardi', 'Wednesday':'Mercredi', 'Thursday':'Jeudi', 'Friday':'Vendredi',
+               'Saturday':'Samedi', 'Sunday':'Dimanche'}
+    for day, day_fr in days_fr.items():
+        if day in data_1h_dict['dt']:
+            data_1h_dict['dt'] = data_1h_dict['dt'].replace(day, day_fr)
 
     return data_1h_dict
 
@@ -127,11 +132,11 @@ def get_season(data_1h_dict):
             data_1h_dict['season_' + str(i+1)] = 1
             return data_1h_dict
 
-# def get_months(data_1h_dict):
-#     month = data_1h_dict['dt'].month
-#     month_label = 'months_' + str(month)
-#     data_1h_dict[month_label] = 1
-#     return data_1h_dict
+def get_months(data_1h_dict):
+    month = data_1h_dict['dt'].month
+    month_label = 'months_' + str(month)
+    data_1h_dict[month_label] = 1
+    return data_1h_dict
 
 def get_week_day(data_1h_dict, timestamp):
     weekday = datetime.fromtimestamp(timestamp).weekday()+1

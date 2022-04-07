@@ -37,11 +37,11 @@ def index():
 
      data = get_48h_data(dataAPI['hourly'], feature_names)
 
-     pickle_registered = cwd + '\\bike_app\\static\\pickle\\model_registered.pkl'
+     pickle_registered = cwd + '\\bike_app\\static\\pickle\\model_registered_stacking.pkl'
      pred_registered = eval(prediction(pickle_registered, data))
      # pred_registered = list(np.round(pred_registered))
 
-     pickle_casual = cwd + '\\bike_app\\static\\pickle\\model_casual.pkl'
+     pickle_casual = cwd + '\\bike_app\\static\\pickle\\model_casual_stacking.pkl'
      pred_casual = eval(prediction(pickle_casual, data))
      # pred_casual = list(np.round(pred_casual))
      pred_count = [pred_registered[i] + pred_casual[i] for i in range(len(pred_casual))]
@@ -74,6 +74,7 @@ def predict():
           dict['months_' + str(month)] = 1
           weekday = dict['dt'].weekday()+1
           dict['week_days_' + str(weekday)] = 1
+          dict['hours'] = form.hour.data
           dict['holiday'] = float(form.holiday.data)
           dict['workingday'] = float(form.workingday.data)
           weather = form.weather.data
@@ -96,10 +97,10 @@ def predict():
           dict = [dict]
           dict = f'{dict}'
 
-          pickle_registered = cwd + '\\bike_app\\static\\pickle\\model_registered.pkl'
+          pickle_registered = cwd + '\\bike_app\\static\\pickle\\model_registered_stacking.pkl'
           pred_registered = eval(prediction(pickle_registered, dict))
 
-          pickle_casual = cwd + '\\bike_app\\static\\pickle\\model_casual.pkl'
+          pickle_casual = cwd + '\\bike_app\\static\\pickle\\model_casual_stacking.pkl'
           pred_casual = eval(prediction(pickle_casual, dict))
 
           pred = {'registered': pred_registered[0], 'casual': pred_casual[0], 'count': pred_registered[0] + pred_casual[0]}

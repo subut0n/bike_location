@@ -155,7 +155,7 @@ def prediction(pickle_uri, data):
      with open(pickle_uri, 'rb') as pickle_file:
           model = pkl.load(pickle_file)
      data = pd.DataFrame(eval(data))
-     pred = list(model.predict(data))
+     pred = model.predict(data)
      pred = list(np.round(pred))
 
      return f'{pred}'

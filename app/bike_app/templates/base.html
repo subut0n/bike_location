@@ -10,21 +10,14 @@
 </head>
 <body>
     <header class="header">
-<<<<<<< HEAD
-        <ul class="nav">
-            <li class="today"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Veloc'City Today</a></li>
-            <li class="manual"><a href="{{ url_for('predict') }}" class="nav-link">Manual prediction</a></li>
-        </ul>
-        <div class='title'>
-            <h1>Veloc'City report</h1>
-        </div>
-=======
           <nav>
             <a href="{{ url_for('index') }}">HOME</a>
             <a href="{{ url_for('predict') }}">PREDICT</a>
             <div id="indicator"></div>
           </nav>
->>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
+          <div class="title">
+            Velo'City report
+          </div>
     </header>
 
     {% block body %}

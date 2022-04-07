@@ -13,13 +13,14 @@
             <p>{{ data[0]['dt'] }}</p>
         </div>
         <div class="weather">
-            <h3>Conditions meteorologiques :</h3>
+            <h3>Conditions météorologiques :</h3>
                 <p>
-                    {% for i in range(4) %}
-                        {% if data[0]['weather_' + (i+1)|string] != 0%}
-                            {{ data[0]['weather_' + (i+1)|string] }}
-                        {% endif %}
-                    {% endfor %}
+                    {{ data[0]['description'] }}
+                <!-- {% for i in range(4) %}
+                    {% if data[0]['weather_' + (i+1)|string] != 0 %}
+                        {{ data[0]['weather_' + (i+1)|string] }}
+                    {% endif %}
+                {% endfor %} -->
                 </p>
         </div>
         <div class="temperature">
@@ -40,39 +41,25 @@
         </div>
 
         <div class="registered">
-<<<<<<< HEAD
-            <h3>Number of registered :</h3>
-            <p>{{ pred['registered'][0] }}</p>
-        </div>
-
-        <div class="casual">
-            <h3>Number of casual :</h3>
-            <p>{{ pred['casual'][0] }}</p>
-=======
             <h3>Utilisateurs enregistres :</h3>
-            <p>{{ pred_registered[0]|int }}</p>
+            <p>{{ pred['registered'][0]|int }}</p>
         </div>
 
         <div class="casual">
             <h3>Utilisateur occasionnel :</h3>
-            <p>{{ pred_casual[0]|int }}</p>
->>>>>>> 42d45e99645595b212e2f190089dd979c43ffca5
+            <p>{{ pred['casual'][0]|int }}</p>
         </div>
 
         <div class="count">
             <h3>Total des usagers :</h3>
-            <p>{{ (pred_casual[0] + pred_registered[0])|int }}</p>
+            <p>{{ pred['count'][0]|int }}</p>
         </div>
         
     </section>
 
     <section class="meteo-48h">
         <div>
-<<<<<<< HEAD
-            <canvas id="myChart1" style="width:70%;max-width:1000px;height:300px"></canvas>
-=======
             <canvas id="myChart1" style="width:100%;max-width:1000px;height:400px"></canvas>
->>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
         </div>
         <script>
             var xValues = [];
@@ -80,13 +67,8 @@
                 xValues.push({{ dict['hours'] }});
             {% endfor %}
 
-<<<<<<< HEAD
-            var yValues = {{ pred_registered }};
-            var color = ["blue"];
-=======
             var yValues = {{ pred['registered'] }};
             var color = ["red"];
->>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
             
             new Chart("myChart1", {
                 type: "bar",

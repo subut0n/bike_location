@@ -116,7 +116,7 @@ nav a:nth-child(3):hover ~ #indicator {
     height:6vh;
     line-height: 6vh;
     color: #fcedd8;
-    background: #d52e3f;
+    /* background: #d52e3f; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 700;
     text-shadow: 1px 1px 0px #eb452b, 
@@ -154,7 +154,7 @@ nav a:nth-child(3):hover ~ #indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
+    width: 400px;
     height: 100px;
 }
 

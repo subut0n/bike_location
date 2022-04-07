@@ -1,10 +1,11 @@
 from flask import Flask, render_template, url_for, request
 from .utils import get_season, load_dataAPI, data_formatting, get_48h_data, \
                    prediction, get_encoded_features_name, feels_like_temperature, \
-                   prediction_segmentation, get_48h_data_segmentation
+                   prediction_segmentation, get_48h_data_segmentation, load_image_weather
 from .forms import AddPrediction
 import pandas as pd
 import numpy as np
+import requests
 import os
 
 app = Flask(__name__)
@@ -35,10 +36,6 @@ def index():
      feature_names = get_encoded_features_name(db, features_to_encode)
 
      data = get_48h_data(dataAPI['hourly'], feature_names)
-<<<<<<< HEAD
-     cwd = os.getcwd()
-=======
->>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
 
      pickle_registered = cwd + '/model_registered.pkl'
      pred_registered = eval(prediction(pickle_registered, data))
@@ -48,15 +45,13 @@ def index():
      pred_casual = eval(prediction(pickle_casual, data))
      # pred_casual = list(np.round(pred_casual))
 
-<<<<<<< HEAD
-     pred_count = pred_registered + pred_casual
-
-=======
      pred = {'registered': pred_registered, 'casual': pred_casual, 'count': pred_registered + pred_casual}
->>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
      data = eval(data)
+     
+     image_url = 'http://openweathermap.org/img/wn/{}@2x.png'.format(data[0]['icon'])
+     image =  requests.get(image_url)
 
-     return render_template('index.html', data=data, pred=pred, clusters=clusters)
+     return render_template('index.html', data=data, pred=pred, clusters=clusters, image=image)
 
 @app.route('/predict/', methods=['GET', 'POST'])
 def predict():
@@ -107,7 +102,7 @@ def predict():
           pickle_casual = cwd + '/model_casual.pkl'
           pred_casual = eval(prediction(pickle_casual, dict))
 
-          pred = {'registered': pred_registered, 'casual': pred_casual, 'count': pred_registered[0] + pred_casual[0]}
+          pred = {'registered': pred_registered[0], 'casual': pred_casual[0], 'count': pred_registered[0] + pred_casual[0]}
 
           return render_template('predict.html', form=form, clusters=clusters, pred=pred)
 

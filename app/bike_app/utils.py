@@ -13,6 +13,11 @@ def load_dataAPI(lat, long, api_key):
      req = req.content.decode("utf-8")
      return json.loads(req)
 
+def load_image_weather(icon):
+     image_url = 'http://openweathermap.org/img/wn/{}@2x.png'.format(icon)
+     image =  requests.get(image_url)
+     return f'{image}'
+
 def get_48h_data(dataAPI, feature_names):
     dataAPI = [dataAPI[i] for i in range(len(dataAPI))]
     data = []
@@ -39,11 +44,14 @@ def data_formatting(data_1h_API, feature_names):
     # On extrait les données nécessaires pour la prédiction
     timestamp = data_1h_API['dt']
     data_1h_API['dt'] = datetime.fromtimestamp(data_1h_API['dt'])
+    data_1h_API['description'] = data_1h_API['weather'][0]['description']
+    data_1h_API['icon'] = data_1h_API['weather'][0]['icon']
     data_1h_API['weather'] = data_1h_API['weather'][0]['id']
+    
 
     # Reformatage des données issues de l'API en une forme qui nous convient
-    keys = ['dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'weather']
-    new_keys = ['dt', 'temp', 'atemp', 'humidity', 'windspeed', 'weather']
+    keys = ['dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'weather', 'description', 'icon']
+    new_keys = ['dt', 'temp', 'atemp', 'humidity', 'windspeed', 'weather', 'description', 'icon']
     data = {}
     for key, new_key in zip(keys, new_keys):
         data[new_key] = data_1h_API[key]
@@ -73,16 +81,6 @@ def data_formatting(data_1h_API, feature_names):
 
     return data_1h_dict
 
-<<<<<<< HEAD
-def prediction(pickle_uri, data):
-     with open(pickle_uri, 'rb') as pickle_file:
-          model = pkl.load(pickle_file)
-     data = pd.DataFrame(eval(data))
-     pred = list(model.predict(data))
-     return f'{pred}'
-
-=======
->>>>>>> 09144a9ba745e9974657320f120cab46c98dc51c
 def feels_like_temperature(temp,humidity):
     # Heat index (indice de chaleur) ; en degré celsius
     c1 = -8.78469475556

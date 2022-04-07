@@ -2,13 +2,13 @@
 
 {% block body %}
 <section class="presentation">
-    <p>Cette page permet d'obtenir une prediction en direct de l'utilisation du reseau de velos en libre service VLille en fonction des donnees meteorologiques ! </p>
+    <p>Ce site permet d'obtenir une prediction en direct de l'utilisation du reseau de velos en libre service VLille en fonction des donnees meteorologiques ! </p>
 </section>
 
 <main class="daily-recap">
 
     <section class='meteo-now'>
-        <div
+        <div class="img1"></div>
         <div class="date">
             <h3>Date du jour:</h3>
             <p>{{ data[0]['dt'] }}</p>
@@ -55,6 +55,7 @@
             <h3>Total des utilisateurs :</h3>
             <p>{{ pred['count'][0]|int }}</p>
         </div>
+        <div class="img2"></div>
         
     </section>
 

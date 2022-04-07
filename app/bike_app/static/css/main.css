@@ -23,7 +23,7 @@ nav a {
     color: #949494;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-size: 1.5rem;
     padding: 10px 20px;
     transition: 0.2s ease color;
 }
@@ -111,7 +111,9 @@ nav a:nth-child(3):hover ~ #indicator {
  
 
 .title {
-    font-size: 2rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 5rem;
     text-align: center;
     height:6vh;
     line-height: 6vh;
@@ -133,29 +135,50 @@ nav a:nth-child(3):hover ~ #indicator {
 .presentation {
     font-family: 'Montserrat', sans-serif;
     color: #fcedd8;
+    font-size: 1rem;
     text-align: center;
-    padding: 50px 50px;
+    margin-bottom: 25px;
 }
 
 .meteo-now {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 2fr repeat(2, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     color: #fcedd8;
-    position: relative;
-    align-items: center;
-    background-image: url("../lille.jpeg");
-    background-color: transparent;
-    background-size: contain;
+    background-image: url("../lille1.jpg");
+    background-size: 100% 100%;
 }
 
 .date, .weather, .temperature, .atemperature, .windforce, .humidity, .registered, .casual, .count {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
-    height: 100px;
+}
+
+.img1 { grid-area: 1 / 1 / 10 / 3; }
+.date { grid-area: 1 / 3 / 2 / 4; }
+.weather { grid-area: 2 / 3 / 3 / 4; }
+.temperature { grid-area: 3 / 3 / 4 / 4; }
+.atemperature { grid-area: 4 / 3 / 5 / 4; }
+.windforce { grid-area: 5 / 3 / 6 / 4; }
+.humidity { grid-area: 6 / 3 / 7 / 4; }
+.registered { grid-area: 7 / 3 / 8 / 4; }
+.casual { grid-area: 8 / 3 / 9 / 4; }
+.count { grid-area: 9 / 3 / 10 / 4; }
+.img2 { grid-area: 1 / 4 / 10 / 6; }
+
+.img1 {
+    background-image: url("../lille2.jpg");
+    background-size: cover;
+}
+
+.img2 {
+    background-image: url("../lille3.jpg");
+    background-size: cover;
 }
 
 .meteo-now h3 {

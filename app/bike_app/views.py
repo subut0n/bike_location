@@ -11,7 +11,7 @@ import os
 app = Flask(__name__)
 
 basedir = os.getcwd()
-db = pd.read_csv(os.path.join(basedir, '../csv/train_modifie.csv'))
+db = pd.read_csv(os.path.join(basedir, 'bike_app\\static\\csv\\train_modifie.csv'))
 
 app.config.from_object('config')
 
@@ -28,7 +28,7 @@ def index():
      data_seg = get_48h_data_segmentation(dataAPI['hourly'])
 
      cwd = os.getcwd()
-     pickle_segmentation = cwd + '/model_segmentation.pkl'  
+     pickle_segmentation = cwd + '\\bike_app\\static\\pickle\\model_segmentation.pkl'  
      clusters = prediction_segmentation(pickle_segmentation, data_seg)
 
      # On encode les colonnes catégorielles et on récupère la liste des noms de ces colonnes
@@ -37,11 +37,11 @@ def index():
 
      data = get_48h_data(dataAPI['hourly'], feature_names)
 
-     pickle_registered = cwd + '/model_registered.pkl'
+     pickle_registered = cwd + '\\bike_app\\static\\pickle\\model_registered.pkl'
      pred_registered = eval(prediction(pickle_registered, data))
      # pred_registered = list(np.round(pred_registered))
 
-     pickle_casual = cwd + '/model_casual.pkl'
+     pickle_casual = cwd + '\\bike_app\\static\\pickle\\model_casual.pkl'
      pred_casual = eval(prediction(pickle_casual, data))
      # pred_casual = list(np.round(pred_casual))
      pred_count = [pred_registered[i] + pred_casual[i] for i in range(len(pred_casual))]
@@ -86,7 +86,7 @@ def predict():
           dict.pop('dt')
 
           cwd = os.getcwd()
-          pickle_segmentation = cwd + '/model_segmentation.pkl'
+          pickle_segmentation = cwd + '\\bike_app\\static\\pickle\\model_segmentation.pkl'
           keys = ['temp', 'atemp', 'humidity', 'windspeed']
           dict_seg = { key: dict[key] for key in keys }
           dict_seg = f'{[dict_seg]}'
@@ -96,10 +96,10 @@ def predict():
           dict = [dict]
           dict = f'{dict}'
 
-          pickle_registered = cwd + '/model_registered.pkl'
+          pickle_registered = cwd + '\\bike_app\\static\\pickle\\model_registered.pkl'
           pred_registered = eval(prediction(pickle_registered, dict))
 
-          pickle_casual = cwd + '/model_casual.pkl'
+          pickle_casual = cwd + '\\bike_app\\static\\pickle\\model_casual.pkl'
           pred_casual = eval(prediction(pickle_casual, dict))
 
           pred = {'registered': pred_registered[0], 'casual': pred_casual[0], 'count': pred_registered[0] + pred_casual[0]}

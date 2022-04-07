@@ -77,7 +77,7 @@ def data_formatting(data_1h_API, feature_names):
 
     data_1h_dict = get_season(data_1h_dict)
     data_1h_dict = get_workingday(data_1h_dict, weekday)
-    data_1h_dict['dt'] = data_1h_dict['dt'].strftime("%A, %Y-%m-%d, %H:%M:%S")
+    data_1h_dict['dt'] = data_1h_dict['dt'].strftime("%A, %Y-%m-%d, %Hh")
 
     return data_1h_dict
 

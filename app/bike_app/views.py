@@ -45,7 +45,8 @@ def index():
      pred_casual = eval(prediction(pickle_casual, data))
      # pred_casual = list(np.round(pred_casual))
 
-     pred = {'registered': pred_registered, 'casual': pred_casual, 'count': pred_registered + pred_casual}
+     pred_count = [pred_registered[i] + pred_casual[i] for i in range(len(pred_casual))]
+     pred = {'registered': pred_registered, 'casual': pred_casual, 'count': pred_count}
      data = eval(data)
      
      image_url = 'http://openweathermap.org/img/wn/{}@2x.png'.format(data[0]['icon'])

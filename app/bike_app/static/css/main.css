@@ -1,182 +1,180 @@
+@import url("https://fonts.googleapis.com/css?family=Modak");
+
+* {
+    background-color: #292929;
+}
+  
+nav {
+    position: relative;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 319px;
+    display: table;
+    margin: 0 auto;
+    
+}
+  
+nav a {
+    position: relative;
+    width: 33.333%;
+    display: table-cell;
+    text-align: center;
+    color: #949494;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 0.2s ease color;
+}
+  
+nav a:before,
+nav a:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.2s ease transform;
+}
+  
+nav a:before {
+    top: 0;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+}
+  
+nav a:after {
+    top: 5px;
+    left: 18px;
+    width: 4px;
+    height: 4px;
+}
+  
+nav a:nth-child(1):before {
+    background-color: yellow;
+}
+  
+nav a:nth-child(1):after {
+    background-color: red;
+}
+  
+nav a:nth-child(2):before {
+    background-color: #00e2ff;
+}
+  
+nav a:nth-child(2):after {
+    background-color: #89ff00;
+}
+  
+nav a:nth-child(3):before {
+    background-color: purple;
+}
+  
+nav a:nth-child(3):after {
+    background-color: palevioletred;
+}
+  
+#indicator {
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: 0.2s ease left;
+}
+  
+nav a:hover {
+    color: #fcedd8;
+}
+  
+nav a:hover:before,
+nav a:hover:after {
+    transform: scale(1);
+}
+  
+nav a:nth-child(1):hover ~ #indicator {
+    background: linear-gradient(130deg, yellow, red);
+}
+  
+nav a:nth-child(2):hover ~ #indicator {
+    left: 34%;
+    background: linear-gradient(130deg, #00e2ff, #89ff00);
+}
+  
+nav a:nth-child(3):hover ~ #indicator {
+    left: 70%;
+    background: linear-gradient(130deg, purple, palevioletred);
+}
+ 
+
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: #111111;
+    font-size: 2rem;
+    text-align: center;
+    height:6vh;
+    line-height: 6vh;
+    color: #fcedd8;
+    /* background: #d52e3f; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #eb452b, 
+                2px 2px 0px #efa032, 
+                3px 3px 0px #46b59b, 
+                4px 4px 0px #017e7f, 
+                5px 5px 0px #052939, 
+                6px 6px 0px #c11a2b, 
+                7px 7px 0px #c11a2b, 
+                8px 8px 0px #c11a2b, 
+                9px 9px 0px #c11a2b;
 }
 
-.presentation p {
-    display: flex;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    margin-bottom: 0;
+.presentation {
+    font-family: 'Montserrat', sans-serif;
+    color: #fcedd8;
+    text-align: center;
+    padding: 50px 50px;
 }
 
 .meteo-now {
-    align-items: center;
-    justify-content: center;
-    background-color: #111111;
-}
-
-.date {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #fcedd8;
+    position: relative;
     align-items: center;
-    background-color: black;
-    width: 500px;
-    height: 100px;
-    margin: auto;
-}
-.date h3{
-    color: white
+    background-image: url("../lille.jpeg");
+    background-color: transparent;
+    background-size: contain;
 }
 
-.date p{
-    color: red;
-}
-
-.weather {
+.date, .weather, .temperature, .atemperature, .windforce, .humidity, .registered, .casual, .count {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: black;
-    width: 500px;
+    width: 400px;
     height: 100px;
-    margin: auto;
-}
-.weather h3{
-    color: white
 }
 
-.weather p{
-    color: red;
+.meteo-now h3 {
+    color: #46b59b;
 }
 
-.temperature {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    width: 500px;
-    height: 100px;
-    margin: auto;
-}
-.temperature h3{
-    color: white
+.count h3 {
+    color: #c11a2b;
+    font-weight: 900;
 }
 
-.temperature p{
-    color: red;
-}
-
-.atemperature {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    width: 500px;
-    height: 100px;
-    margin: auto;
-}
-.atemperature h3{
-    color: white
-}
-
-.atemperature p{
-    color: red;
-}
-
-.windforce {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    width: 500px;
-    height: 100px;
-    margin: auto;
-}
-.windforce h3{
-    color: white
-}
-
-.windforce p{
-    color: red;
-}
-
-.humidity {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    width: 500px;
-    height: 100px;
-    margin: auto;
-}
-.humidity h3{
-    color: white
-}
-
-.humidity p{
-    color: red;
-}
-
-.registered {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    width: 500px;
-    height: 100px;
-    margin: auto;
-}
-.registered h3{
-    color: white
-}
-
-.registered p{
-    color: red;
-}
-
-.casual {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    width: 500px;
-    height: 100px;
-    margin: auto;
-}
-.casual h3{
-    color: white
-}
-
-.casual p{
-    color: red;
+.count p {
+    color: #efa032;
+    font-weight: 900;
 }
 
 .meteo-48h {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: #111111;
-    color: white;
-    
-}
-
-.error {
-    background-color: red;
-    color: white;
-    font-size: 1.2em;
-    margin-top: 0;
+    font-family: 'Montserrat', sans-serif;
 }

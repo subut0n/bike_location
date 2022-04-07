@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/third.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bis.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
     <header class="header">
           <nav>
-            <a href="{{ url_for('index') }}">HOME</a>
-            <a href="{{ url_for('predict') }}">PREDICT</a>
+            <a href="{{ url_for('index') }}">ACCUEIL</a>
+            <a href="{{ url_for('predict') }}">PREDICTION</a>
             <div id="indicator"></div>
           </nav>
           <div class="title">

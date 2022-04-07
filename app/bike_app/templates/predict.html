@@ -6,49 +6,59 @@
 
 {% block body %}
 
-<h2>Nouvelle Prediction</h2>
-
-<div class='card'>
-    <div class="right-side">
-        <form method="POST" class="form-register">
-            {{ form.hidden_tag() }}
-            <div class="form-date">
-                {{ form.date.label }}
-                {{ form.date(size=32, class="form-control") }}
+<div class="container">
+    <div class="screen">
+      <div class="screen-header">
+        <div class="screen-header-left">
+          <div class="screen-header-button close"></div>
+          <div class="screen-header-button maximize"></div>
+          <div class="screen-header-button minimize"></div>
+        </div>
+        <div class="screen-header-right">
+          <div class="screen-header-ellipsis"></div>
+          <div class="screen-header-ellipsis"></div>
+          <div class="screen-header-ellipsis"></div>
+        </div>
+      </div>
+      <div class="screen-body">
+        <div class="screen-body-item left">
+          <div class="app-title">
+            <span>Prédictions</span>
+            <span>Personnalisées</span>
+          </div>
+        <div class="screen-body-item">
+          <div class="app-form">
+            <form method="POST" class="form-register">
+                {{ form.hidden_tag() }}
+            <div class="app-form-group">
+                {{ form.date(class="form-control") }}
             </div>
-            <div class="form-hour">
-                {{ form.hour.label }}
-                {{ form.hour(size=1, class="form-control-select") }}
+            <div class="app-form-group">
+                {{ form.hour(size=1, class="form-control-select", placeholder="HEURE") }}
             </div>
-            <div class="form-weather">
-                {{ form.weather.label }}<br>
-                {{ form.weather(size=1, class="form-control-select") }}
+            <div class="app-form-group">
+                {{ form.weather(size=1, class="form-control-select", placeholder="CONDITIONS METEOROLOGIQUES") }} 
             </div>
-            <div class="form-holiday">
-                {{ form.holiday.label }}
-                {{ form.holiday(size=1, class="form-control-select") }}
+            <div class="app-form-group">
+                {{ form.holiday(size=1, class="form-control-select", placeholder="VACANCES") }}
             </div>
-            <div class="form-workingday">
-                {{ form.workingday.label }}
-                {{ form.workingday(size=1, class="form-control-select") }}
+            <div class="app-form-group">
+                {{ form.workingday(size=1, class="form-control-select", placeholder="JOUR DE TRAVAIl") }}
             </div>
-            <div class="form-temperature">
-                {{ form.temperature.label }}
-                {{ form.temperature(size=32, class="form-control") }}
+            <div class="app-form-group">
+                {{ form.temperature(size=32, class="form-control", placeholder="TEMPERATURE") }}
                 {% for error in form.temperature.errors %}
                 <p class="error" >{{ error }}</p>
-                {% endfor%}
+                {% endfor %}
             </div>
-            <div class="form-humidity">
-                {{ form.humidity.label }}
-                {{ form.humidity(value="%", size=10, class="form-control", min='0', max='100') }}
+            <div class="app-form-group">
+                {{ form.humidity(value="%", size=10, class="form-control", min='0', max='100', placeholder="HUMIDITE") }}
                 {% for error in form.humidity.errors %}
                     <p class="error" >{{ error }}</p>
-                {% endfor%}
+                {% endfor %}
             </div>
-            <div class="form-windspeed">
-                {{ form.windspeed.label }}
-                {{ form.windspeed(size=32, class="form-control") }}
+            <div class="app-form-group">
+                {{ form.windspeed(size=32, class="form-control", placeholder="VENT") }}
                 {% for error in form.windspeed.errors %}
                     <p class="error" >{{ error }}</p>
                 {% endfor%}
@@ -56,13 +66,17 @@
             <div class="form-submit">
                 {{ form.submit(class="buttonsubmit",id="button-add") }}
             </div>
-        </form>
-    </div>
-        <div>
-            <p> Nombre d'abonnés : {{ pred['registered']|int }} </p>
-            <p> Nombre d'utilisateurs occasionnels : {{ pred['casual']|int }} </p>
-            <p> Total d'utilisateurs : {{ pred['count']|int }} </p>
-            <p> Forfait : {{ clusters[0] }} </p>
+            <div class="results">
+                <p> Nombre d'abonnés : {{ pred['registered']|int }} </p>
+                <p> Nombre d'utilisateurs occasionnels : {{ pred['casual']|int }} </p>
+                <p> Total d'utilisateurs : {{ pred['count']|int }} </p>
+                <p> Forfait : {{ clusters[0] }} </p>
+            </div>
+            </form>
+          </div>
         </div>
-</div>
+      </div>
+    </div>
+  </div>
+  
 {% endblock %}

@@ -159,7 +159,7 @@ nav a:nth-child(3):hover ~ #indicator {
 }
 
 .meteo-now h3 {
-    color: #efa032;
+    color: #46b59b;
 }
 
 .count h3 {
@@ -168,7 +168,7 @@ nav a:nth-child(3):hover ~ #indicator {
 }
 
 .count p {
-    color: #46b59b;
+    color: #efa032;
     font-weight: 900;
 }
 
@@ -177,19 +177,4 @@ nav a:nth-child(3):hover ~ #indicator {
     flex-direction: column;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.card {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-	width: 60rem;
-    margin: auto;
-    margin-top: 100px;
-    background: white;
-    position:center;
-    align-self: center;
-    top: 50rem;
-    border-radius: 1.5rem;
-    box-shadow: 4px 3px 20px #3535358c;
-    display:flex;
-    flex-direction: row;
 }

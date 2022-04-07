@@ -78,11 +78,14 @@ def data_formatting(data_1h_API, feature_names):
     data_1h_dict = get_season(data_1h_dict)
     data_1h_dict = get_workingday(data_1h_dict, weekday)
     data_1h_dict['dt'] = data_1h_dict['dt'].strftime("%A, %Y-%m-%d, %Hh")
+<<<<<<< HEAD
     days_fr = {'Monday':'Lundi', 'Tuesday':'Mardi', 'Wednesday':'Mercredi', 'Thursday':'Jeudi', 'Friday':'Vendredi',
                'Saturday':'Samedi', 'Sunday':'Dimanche'}
     for day, day_fr in days_fr.items():
         if day in data_1h_dict['dt']:
             data_1h_dict['dt'] = data_1h_dict['dt'].replace(day, day_fr)
+=======
+>>>>>>> 4197252b777fb50c8c9b9cb09e31d26293fbe789
 
     return data_1h_dict
 

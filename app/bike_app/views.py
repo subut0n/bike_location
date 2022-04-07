@@ -48,10 +48,10 @@ def index():
      pred = {'registered': pred_registered, 'casual': pred_casual, 'count': pred_count}
      data = eval(data)
      
-     # image_url = 'http://openweathermap.org/img/wn/{}@2x.png'.format(data[0]['icon'])
-     # image =  requests.get(image_url)
+     image_url = 'http://openweathermap.org/img/wn/{}@2x.png'.format(data[0]['icon'])
+     image =  requests.get(image_url)
 
-     return render_template('index.html', data=data, pred=pred, clusters=clusters, image=image)
+     return render_template('index.html', data=data, pred=pred, clusters=clusters)#, image=image
 
 @app.route('/predict/', methods=['GET', 'POST'])
 def predict():

@@ -8,6 +8,7 @@
 <main class="daily-recap">
 
     <section class='meteo-now'>
+        <div
         <div class="date">
             <h3>Date du jour:</h3>
             <p>{{ data[0]['dt'] }}</p>
@@ -24,34 +25,48 @@
                 </p>
         </div>
         <div class="temperature">
+<<<<<<< HEAD
             <h3>Temperature :</h3>
             <p>{{ data[0]['temp'] }} °C</p>
         </div>
         <div class="atemperature">
             <h3>Temperature ressentie :</h3>
             <p>{{ data[0]['atemp'] }} °C</p>
+=======
+            <h3>Température :</h3>
+            <p>{{ data[0]['temp'] }}</p>
+        </div>
+        <div class="atemperature">
+            <h3>Température ressentie :</h3>
+            <p>{{ data[0]['atemp'] }}</p>
+>>>>>>> 4197252b777fb50c8c9b9cb09e31d26293fbe789
         </div>
         <div class="windforce">
             <h3>Force du vent :</h3>
             <p>{{ data[0]['windspeed'] }} km/h</p>
         </div>
         <div class="humidity">
+<<<<<<< HEAD
             <h3>Humidite :</h3>
             <p>{{ data[0]['humidity'] }} %</p>
+=======
+            <h3>Humidité :</h3>
+            <p>{{ data[0]['humidity'] }}</p>
+>>>>>>> 4197252b777fb50c8c9b9cb09e31d26293fbe789
         </div>
 
         <div class="registered">
-            <h3>Utilisateurs enregistres :</h3>
+            <h3>Utilisateurs enregistrés :</h3>
             <p>{{ pred['registered'][0]|int }}</p>
         </div>
 
         <div class="casual">
-            <h3>Utilisateur occasionnel :</h3>
+            <h3>Utilisateurs occasionnels :</h3>
             <p>{{ pred['casual'][0]|int }}</p>
         </div>
 
         <div class="count">
-            <h3>Total des usagers :</h3>
+            <h3>Total des utilisateurs :</h3>
             <p>{{ pred['count'][0]|int }}</p>
         </div>
         
@@ -59,7 +74,7 @@
 
     <section class="meteo-48h">
         <div>
-            <canvas id="myChart1" style="width:100%;max-width:1000px;height:400px"></canvas>
+            <canvas id="myChart1" style="width:100%;max-width:1000px;height:500px"></canvas>
         </div>
         <script>
             var xValues = [];
@@ -75,7 +90,7 @@
                 data: {
                     labels: xValues,
                     datasets: [{
-                    label: "Predicted number of registered",
+                    label: "Nombre d'utilisateurs enregistrés prédit",
                     backgroundColor: color,
                     data: yValues
                     }]
@@ -87,7 +102,7 @@
                                     size: 36
                             },
                             display: true,
-                            text: 'Predicted number of registered as a function of time'
+                            text: "Prédictions sur 48 heures des utilisateurs enregistrés: "
                         }
                     },
                     scales: {
@@ -97,7 +112,7 @@
                                     size: 22
                                 },
                                 display: true,
-                                text: 'Predicted number of registered'
+                                text: "Nombre d'utilisateurs enregistrés prédit"
                             }
                         },
                         x: {
@@ -106,7 +121,7 @@
                                     size: 22
                                 },
                                 display: true,
-                                text: 'Time (hour)'
+                                text: "Temps (Heure)"
                             }
                         }
                     }
@@ -116,7 +131,7 @@
 
     <section class="meteo-48h">
         <div>
-            <canvas id="myChart2" style="width:100%;max-width:1000px;height:400px"></canvas>
+            <canvas id="myChart2" style="width:100%;max-width:1000px;height:500px"></canvas>
         </div>
         <script>
             var xValues = [];
@@ -132,7 +147,7 @@
                 data: {
                     labels: xValues,
                     datasets: [{
-                    label: "Predicted number of casual",
+                    label: "Nombre d'utilisateurs occasionnels prédit",
                     backgroundColor: color,
                     data: yValues,
                     color: '#fcedd8'
@@ -145,7 +160,7 @@
                                     size: 36
                             },
                             display: true,
-                            text: 'Predicted number of casual as a function of time'
+                            text: "Prédictions sur 48 heures des utilisateurs occasionnels:" 
                         }
                     },
                     scales: {
@@ -155,7 +170,7 @@
                                     size: 22
                                 },
                                 display: true,
-                                text: 'Predicted number of casual'
+                                text: "Nombre d'utilisateurs occasionnels prédit"
                             }
                         },
                         x: {
@@ -164,7 +179,7 @@
                                     size: 22
                                 },
                                 display: true,
-                                text: 'Time : hour'
+                                text: "Temps (Heure)"
                             }
                         }
                     }
@@ -175,7 +190,7 @@
 
     <section class="meteo-48h">
         <div>
-            <canvas id="myChart3" style="width:100%;max-width:1000px;height:400px"></canvas>
+            <canvas id="myChart3" style="width:100%;max-width:1000px;height:500px"></canvas>
         </div>
         <script>
             var xValues = [];
@@ -191,7 +206,7 @@
                 data: {
                     labels: xValues,
                     datasets: [{
-                    label: "Predicted number of count",
+                    label: "Nombre d'utilisateurs total prédit",
                     backgroundColor: color,
                     data: yValues
                     }]
@@ -203,7 +218,7 @@
                                     size: 36
                             },
                             display: true,
-                            text: 'Predicted number of count as a function of time'
+                            text: "Prédictions sur 48 heures du total des utilisateurs:"
                         }
                     },
                     scales: {
@@ -213,7 +228,7 @@
                                     size: 22
                                 },
                                 display: true,
-                                text: 'Predicted number of count'
+                                text: "Nombre d'utilisateurs total prédit"
                             }
                         },
                         x: {
@@ -222,7 +237,7 @@
                                     size: 22
                                 },
                                 display: true,
-                                text: 'Time : hour'
+                                text: "Temps (Heure)"
                             }
                         }
                     }
